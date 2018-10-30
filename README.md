@@ -11,14 +11,16 @@ Finnish words in Wiktionary.  It is most conveniently used with
 dictionaries extracted using the
 [wiktextract](https://github.com/tatuylonen/wiktextract).  The
 intention is that this module can be used to generate the complete set
-of inflected forms for any Finnish word in Wiktionary.
+of inflected forms for any Finnish word in Wiktionary - including
+comparisons, possessive suffixes, clitics, and nominally inflected
+verb forms.
 
 ## Getting started
 
 ### Installing
 
 To install ``wiktwikfinnish``, use ``pip3`` (or ``pip``, as
-appropriate), or close the repository and install from the source:
+appropriate), or clone the repository and install from the source:
 
 ```
 git clone https://github.com/tatuylonen/wiktfinnish.git
@@ -345,7 +347,7 @@ patches or suggestions.
 Copyright (c) 2018 Tatu Ylonen.  This package is free for both
 commercial and non-commercial use.  It is licensed under the MIT
 license.  See the file
-[LICENSE](https://github.com/tatuylonen/wiktextract/blob/master/LICENSE)
+[LICENSE](https://github.com/tatuylonen/wiktfinnish/blob/master/LICENSE)
 for details.
 
 Credit and linking to the project's website and/or citing any future
