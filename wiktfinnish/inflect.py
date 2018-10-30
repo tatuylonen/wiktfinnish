@@ -315,7 +315,6 @@ def add_clitic(results, clitic):
 def clean_exception(v):
     """Cleans an exception value from various extra stuff that we don't want
     in the result."""
-    print("CLEAN INITIAL:", v)
     v = re.sub(r"\[\[[^]|]*\|([^]]*)\]\]", r"\1", v)
     v = re.sub(r"\[\[", "", v)
     v = re.sub(r"\]\]", "", v)
@@ -324,7 +323,6 @@ def clean_exception(v):
     v = re.sub(r"(?is)<sup>.*?</sup>", "", v)
     v = re.sub(r"<[^>]*>", "", v)
     v = re.sub(r"\s+", " ", v)
-    print("CLEAN EXCEPTION:", v)
     return v.strip()
 
 
@@ -365,8 +363,8 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
             i -= 1
             if i > nargs:
                 # This declension has more arguments than it takes
-                print("DECLENSION HAS TOO MANY ARGS:", name, args)
-                if nargs == 2:
+                #print("DECLENSION HAS TOO MANY ARGS:", name, args)
+                if nargs == 2 and not decl.get("ignore-extra-args", False):
                     stem = ""
                     for j in range(1, i):
                         stem += args.get(j) or args.get(str(j)) or ""
@@ -473,6 +471,9 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                                        "ins-pl", "nom-pl"):
                 if v[-1] in ("n", "t"):
                     v = v[:-1]
+            elif use_poss and form in ("inf4-nom",):
+                if v.endswith("nen"):
+                    v = v[:-3] + "se"
 
             # Add the value to the results.
             results.append(v)

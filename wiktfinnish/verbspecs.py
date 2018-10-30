@@ -101,6 +101,7 @@ verb_conjs = {
         "inf3-ins": "124m5n",
         "inf3-pass-ins": "134tt5m5n",
         "inf4-nom": "124minen",
+        "inf4-nom-poss": "124mise",
         "inf4-par": "124mist5",
         "inf5": "124m5isill5",  # +poss_suff
     },
@@ -193,6 +194,7 @@ verb_conjs = {
         "inf3-ins": "124m4n",
         "inf3-pass-ins": "13ett4m4n",
         "inf4-nom": "124minen",
+        "inf4-nom-poss": "124mise",
         "inf4-par": "124mist4",
         "inf5": "124m4isill4",  # +poss_suff
     },
@@ -285,6 +287,7 @@ verb_conjs = {
         "inf3-ins": "1t2m2n",
         "inf3-pass-ins": "1Dett2m2n",
         "inf4-nom": "1t2minen",
+        "inf4-nom-poss": "1t2mise",
         "inf4-par": "1t2mist2",
         "inf5": "1t2m2isill2",  # +poss_suff
     },
@@ -377,6 +380,7 @@ verb_conjs = {
         "inf3-ins": "1t2m2n",
         "inf3-pass-ins": "1Dett2m2n",
         "inf4-nom": "1t2minen",
+        "inf4-nom-poss": "1t2mise",
         "inf4-par": "1t2mist2",
         "inf5": "1t2m2isill2",  # +poss_suff
     },
@@ -469,6 +473,7 @@ verb_conjs = {
         "inf3-ins": "124m4n",
         "inf3-pass-ins": "13ett4m4n",
         "inf4-nom": "124minen",
+        "inf4-nom-poss": "124mise",
         "inf4-par": "124mist4",
         "inf5": "124m4isill4",  # +poss_suff
     },
@@ -561,6 +566,7 @@ verb_conjs = {
         "inf3-ins": "1t2m2n",
         "inf3-pass-ins": "1Dett2m2n",
         "inf4-nom": "1t2minen",
+        "inf4-nom-poss": "1t2mise",
         "inf4-par": "1t2mist2",
         "inf5": "1t2m2isill2",  # +poss_suff
     },
@@ -653,6 +659,7 @@ verb_conjs = {
         "inf3-ins": "12em4n",
         "inf3-pass-ins": "13ett4m4n",
         "inf4-nom": "12eminen",
+        "inf4-nom-poss": "12emise",
         "inf4-par": "12emist4",
         "inf5": "12em4isill4",  # +poss_suff
     },
@@ -745,6 +752,7 @@ verb_conjs = {
         "inf3-ins": "1tem2n",
         "inf3-pass-ins": "1Dett2m2n",
         "inf4-nom": "1teminen",
+        "inf4-nom-poss": "1temise",
         "inf4-par": "1temist2",
         "inf5": "1tem2isill2",  # +poss_suff
     },
@@ -837,6 +845,7 @@ verb_conjs = {
         "inf3-ins": "1htem2n",
         "inf3-pass-ins": "1hDett2m2n",
         "inf4-nom": "1hteminen",
+        "inf4-nom-poss": "1htemise",
         "inf4-par": "1htemist2",
         "inf5": "1htem2isill2",  # +poss_suff
     },
@@ -929,6 +938,7 @@ verb_conjs = {
         "inf3-ins": "12im4n",
         "inf3-pass-ins": "13itt4m4n",
         "inf4-nom": "12iminen",
+        "inf4-nom-poss": "12imise",
         "inf4-par": "12imist4",
         "inf5": "12im4isill4",  # +poss_suff
     },
@@ -1021,6 +1031,7 @@ verb_conjs = {
         "inf3-ins": "1m2n",
         "inf3-pass-ins": "1t2m2n",
         "inf4-nom": "1minen",
+        "inf4-nom-poss": "1mise",
         "inf4-par": "1mist2",
         "inf5": "1m2isill2",  # +poss_suff
     },
@@ -1113,6 +1124,7 @@ verb_conjs = {
         "inf3-ins": "1m2n",
         "inf3-pass-ins": "1t2m2n",
         "inf4-nom": "1minen",
+        "inf4-nom-poss": "1mise",
         "inf4-par": "1mist2",
         "inf5": "1m2isill2",  # +poss_suff
     },
@@ -1205,6 +1217,7 @@ verb_conjs = {
         "inf3-ins": "1m2n",
         "inf3-pass-ins": "1t2m2n",
         "inf4-nom": "1minen",
+        "inf4-nom-poss": "1mise",
         "inf4-par": "1mist2",
         "inf5": "1m2isill2",  # +poss_suff
     },
@@ -1297,6 +1310,7 @@ verb_conjs = {
         "inf3-ins": "1m2n",
         "inf3-pass-ins": "1t2m2n",
         "inf4-nom": "1minen",
+        "inf4-nom-poss": "1mise",
         "inf4-par": "1mist2",
         "inf5": "1m2isill2",  # +poss_suff
     },
@@ -1389,6 +1403,7 @@ verb_conjs = {
         "inf3-ins": "134sem5n",
         "inf3-pass-ins": "124st5m5n",
         "inf4-nom": "134seminen",
+        "inf4-nom-poss": "134semise",
         "inf4-par": "134semist5",
         "inf5": "134sem5isill5",  # +poss_suff
     },
@@ -1481,6 +1496,7 @@ verb_conjs = {
         "inf3-ins": "134em5n",
         "inf3-pass-ins": "124t5m5n",
         "inf4-nom": "134eminen",
+        "inf4-nom-poss": "134emise",
         "inf4-par": "134emist5",
         "inf5": "134em5isill5",  # +poss_suff
     },
@@ -1573,6 +1589,7 @@ verb_conjs = {
         "inf3-ins": ["1m2n", "1tsem2n"],
         "inf3-pass-ins": "1t2m2n",
         "inf4-nom": ["1minen", "1tseminen"],
+        "inf4-nom-poss": ["1mise", "1tsemise"],
         "inf4-par": ["1mist2", "1tsemist2"],
         "inf5": ["1m2isill2", "1tsem2isill2"], # +poss_suff
     },
@@ -1665,6 +1682,7 @@ verb_conjs = {
         "inf3-ins": ["1tsem2n"],
         "inf3-pass-ins": "1tt2m2n",
         "inf4-nom": ["1tseminen"],
+        "inf4-nom-poss": ["1tsemise"],
         "inf4-par": ["1tsemist2"],
         "inf5": ["1tsem2isill2"], # +poss_suff
     },
@@ -1757,6 +1775,7 @@ verb_conjs = {
         "inf3-ins": ["1ksem2n"],
         "inf3-pass-ins": "1st2m2n",
         "inf4-nom": ["1kseminen"],
+        "inf4-nom-poss": ["1ksemise"],
         "inf4-par": ["1ksemist2"],
         "inf5": ["1ksem2isill2"], # +poss_suff
     },
@@ -1849,6 +1868,7 @@ verb_conjs = {
         "inf3-ins": "1kem2n",
         "inf3-pass-ins": "1ht2m2n",
         "inf4-nom": "1keminen",
+        "inf4-nom-poss": "1kemise",
         "inf4-par": "1kemist2",
         "inf5": "1kem2isill2",  # +poss_suff
     },
@@ -1941,6 +1961,7 @@ verb_conjs = {
         "inf3-ins": "134nem5n",
         "inf3-pass-ins": "124tt5m5n",
         "inf4-nom": "134neminen",
+        "inf4-nom-poss": "134nemise",
         "inf4-par": "134nemist5",
         "inf5": "134nem5isill5",  # +poss_suff
     },
@@ -2033,6 +2054,7 @@ verb_conjs = {
         "inf3-ins": "1344m4n",
         "inf3-pass-ins": "124tt4m4n",
         "inf4-nom": "1344minen",
+        "inf4-nom-poss": "1344mise",
         "inf4-par": "1344mist4",
         "inf5": "1344m4isill4",  # +poss_suff
     },
@@ -2125,6 +2147,7 @@ verb_conjs = {
         "inf3-ins": "1345m5n",
         "inf3-pass-ins": "124tt5m5n",
         "inf4-nom": "1345minen",
+        "inf4-nom-poss": "1345mise",
         "inf4-par": "1345mist5",
         "inf5": "1345m5isill5",  # +poss_suff
     },
@@ -2217,6 +2240,7 @@ verb_conjs = {
         "inf3-ins": "1345m5n",
         "inf3-pass-ins": "124tt5m5n",
         "inf4-nom": "1345minen",
+        "inf4-nom-poss": "1345mise",
         "inf4-par": "1345mist5",
         "inf5": "1345m5isill5",  # +poss_suff
     },
@@ -2309,6 +2333,7 @@ verb_conjs = {
         "inf3-ins": "1t2m2n",
         "inf3-pass-ins": "1Dett2m2n",
         "inf4-nom": "1t2minen",
+        "inf4-nom-poss": "1t2mise",
         "inf4-par": "1t2mist2",
         "inf5": "1t2m2isill2",  # +poss_suff
     },
@@ -2329,6 +2354,7 @@ verb_conjs = {
     },
     "fi-conj-kumajaa": {
     	"nargs": 2,
+	"ignore-extra-args": True,
         "pres-1sg": "12j2n",
         "pres-2sg": "12j2t",
         "pres-3sg": "12j22",
@@ -2416,6 +2442,7 @@ verb_conjs = {
         "inf3-ins": "12j2m2n",
         "inf3-pass-ins": "12j2tt2m2n",
         "inf4-nom": "12j2minen",
+        "inf4-nom-poss": "12j2mise",
         "inf4-par": "12j2mist2",
         "inf5": "12j2m2isill2",  # +poss_suff
     },
@@ -2508,6 +2535,7 @@ verb_conjs = {
         "inf3-ins": "oleman",
         "inf3-pass-ins": "oltaman",
         "inf4-nom": "oleminen",
+        "inf4-nom-poss": "olemise",
         "inf4-par": "olemista",
         "inf5": "olemaisilla",  # +poss_suff
     },
@@ -2616,6 +2644,7 @@ verb_conjs = {
         "inf3-ins": "seisoman",
         "inf3-pass-ins": "seistämän",
         "inf4-nom": "seisominen",
+        "inf4-nom-poss": "seisomise",
         "inf4-par": "seisomista",
         "inf5": "seisomaisilla",  # +poss_suff
     },
@@ -2709,6 +2738,7 @@ verb_conjs = {
         "inf3-ins": "virkkaman",
         "inf3-pass-ins": "virkettämän",
         "inf4-nom": "virkkaminen",
+        "inf4-nom-poss": "virkkamise",
         "inf4-par": "virkkamista",
         "inf5": "virkkamaisilla",  # +poss_suff
     },
