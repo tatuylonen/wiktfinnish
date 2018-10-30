@@ -4,9 +4,9 @@
 # Copyright (c) 2018 Tatu Ylonen.  See LICENSE.
 
 import re
-import nounspecs
-import verbspecs
-import formnames
+from wiktfinnish import nounspecs
+from wiktfinnish import verbspecs
+from wiktfinnish import formnames
 
 # Set of all valid conjugation and declension names.  This is used in
 # assertions.
@@ -74,10 +74,10 @@ argument_name_map = {
     "inf4-nom": ["inf4_nomi"],
     "inf4-par": ["inf4_part"],
 
-    # For fi-decl-pron
+    # For fi-decl-pron and fi-decl
     "nom-sg": ["1s", "word"],
     "gen-sg": ["2s"],
-    "ptv-sg": ["3s"],
+    "ptv-sg": ["3s", "par_sg"],
     "acc-sg": ["4s"],
     "ine-sg": ["5s"],
     "ela-sg": ["6s"],
@@ -89,10 +89,10 @@ argument_name_map = {
     "tra-sg": ["12s"],
     "ins-sg": ["13s"],
     "abe-sg": ["14s"],
-    "cmt-sg": ["15s"],
+    "cmt-sg": ["15s", "com_pl"],
     "nom-pl": ["1p"],
     "gen-pl": ["2p"],
-    "ptv-pl": ["3p"],
+    "ptv-pl": ["3p", "par_pl"],
     "acc-pl": ["4p"],
     "ine-pl": ["5p"],
     "ela-pl": ["6p"],
@@ -104,7 +104,7 @@ argument_name_map = {
     "tra-pl": ["12p"],
     "ins-pl": ["13p"],
     "abe-pl": ["14p"],
-    "cmt-pl": ["15p"],
+    "cmt-pl": ["15p", "com_pl"],
     # superessive "a1s": "siellä",
     # delative "a2s": "sieltä",
     # sublative "a3s": "sinne",
@@ -312,18 +312,20 @@ def add_clitic(results, clitic):
     return results2
 
 
-def clean_exception(title):
+def clean_exception(v):
     """Cleans an exception value from various extra stuff that we don't want
     in the result."""
-    title = re.sub(r"\[\[[^|]*\|([^]]*)\]\]", r"\1", title)
-    title = re.sub(r"\[\[", "", title)
-    title = re.sub(r"\]\]", "", title)
-    title = re.sub(r"``+", "", title)
-    title = re.sub(r"''+", "", title)
-    title = re.sub(r"(?is)<sup>.*?</sup>", "", title)
-    title = re.sub(r"<[^>]*>", "", title)
-    title = re.sub(r"\s+", " ", title)
-    return title.strip()
+    print("CLEAN INITIAL:", v)
+    v = re.sub(r"\[\[[^]|]*\|([^]]*)\]\]", r"\1", v)
+    v = re.sub(r"\[\[", "", v)
+    v = re.sub(r"\]\]", "", v)
+    v = re.sub(r"``+", "", v)
+    v = re.sub(r"''+", "", v)
+    v = re.sub(r"(?is)<sup>.*?</sup>", "", v)
+    v = re.sub(r"<[^>]*>", "", v)
+    v = re.sub(r"\s+", " ", v)
+    print("CLEAN EXCEPTION:", v)
+    return v.strip()
 
 
 def inflect_using(decls, name, args, form, use_poss, use_clitic):
@@ -436,7 +438,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
         if name != "fi-decl-pron":
             v = re.sub(r"\b(minun|sinun|hänen|meidän|teidän|heidän)\b", "", v)
         v = re.sub(r"\(\*\)", "", v)
-        v = clean_title(v)
+        v = clean_exception(v)
         if v.startswith("/") or v.endswith("/"):
             return  # Happens with some loan words, e.g. college
         # Some cases, at least some fi-decl-pron, have multiple alternatives
@@ -462,15 +464,15 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                     #      name, args, form, use_poss)
                     continue
                 v = v[:-1] + "e"
-            elif use_poss and form in ("inf5", "inf1-long"):
+            elif use_poss and form in ("inf5", "inf1-long", "cmt-sg", "cmt-pl"):
                 if v[-2:] in ("an", "en", "in", "on", "un", "yn", "än", "ön"):
                     v = v[:-2]
                 elif v.endswith("nsa") or v.endswith("nsä"):
                     v = v[:-3]
-                else:
-                    print("inflect_using add_exception EXPECTED POSS SUFF",
-                          repr(v), name, args)
-                    continue
+            elif use_poss and form in ("gen-sg", "gen-pl", "ill-sg", "ill-pl",
+                                       "ins-pl", "nom-pl"):
+                if v[-1] in ("n", "t"):
+                    v = v[:-1]
 
             # Add the value to the results.
             results.append(v)
@@ -481,8 +483,8 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
         # Exception defined for this form
         if v:
             add_exception(v)
-            for i in range(2, 4):
-                v = decl.get(formarg + str(i), None)
+            for i in range(2, 5):
+                v = args.get(formarg + str(i), None)
                 if v:
                     add_exception(v)
     elif (form in argument_name_map and
@@ -562,11 +564,13 @@ def inflect_nominal(name, args, form, comp="", poss="",
         if form.endswith("-sg"):
             return []
 
-    if name == "fi-decl" and poss:
-        return []
+    # In comitative, force possessive suffix if not adj and none provided
+    if args.get("pos") not in ("adj", "pron", "num"):
+        if form == "cmt-pl" and not poss:
+            poss = "3x"
 
     # Only allow comparison for forms treated as adjectives.
-    if comp != "" and args.get("pos", None) != "adj":
+    if comp != "" and args.get("pos") != "adj":
         print("Comparative/superlative without pos=adj:", args)
         comp = ""
 
@@ -608,13 +612,6 @@ def inflect_nominal(name, args, form, comp="", poss="",
         results2 = []
         for v in results:
             results2.append(v + "e")
-        results = results2
-
-    # In comitative, force possessive suffix if not adj and none provided
-    if form == "cmt-pl" and args.get("pos") != "adj" and not poss:
-        results2 = []
-        for v in results:
-            results2.append(v + "en")
         results = results2
 
     # Add possessive suffix
@@ -705,23 +702,23 @@ def inflect_verbal(name, args, form, comp="", case="",
         return results
 
 
-def inflect(name, conj, form):
+def inflect(name, args, form):
     """This is a generic Finnish word inflection function.  This inflects
-    a word of class ``name``, having conjugation/declension ``conj``
+    a word of class ``name``, having conjugation/declension arguments ``args``
     into the form indicated by ``form``.  The form is indicated by
     (vform, comp, case, poss, clitic).  This returns a list of
     inflected forms, the most preferred one first."""
     if name not in CONJ_DECL_NAMES:
         print("UNDEFINED DECLENSION/CONJUGATION:", name, pos, conj)
         return []
-    assert isinstance(conj, dict)
+    assert isinstance(args, dict)
     assert isinstance(form, (list, tuple))
     assert len(form) == 5
     vform, comp, case, poss, clitic = form
     if vform:
-        return inflect_verbal(name, conj, vform, comp=comp, case=case,
+        return inflect_verbal(name, args, vform, comp=comp, case=case,
                               poss=poss, clitic=clitic)
     if not case:
         case = "nom-sg"
-    return inflect_nominal(name, conj, case, comp=comp, poss=poss,
+    return inflect_nominal(name, args, case, comp=comp, poss=poss,
                            clitic=clitic)

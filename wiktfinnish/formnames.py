@@ -210,7 +210,7 @@ def all_forms_iter(pos, comparable=True, transitive=True, no_clitics=False):
                     yield ("", "", case, '', clitic)
         elif pos == "adj":
             comps = COMP_FORMS if comparable else [""]
-            for comp in COMP_FORMS:
+            for comp in comps:
                 for case in CASE_FORMS:
                     if case in ("acc-sg", "acc-pl"):
                         continue
