@@ -1,3 +1,7 @@
+# Tests for inflecting Finnish words
+#
+# Copyright (c) 2018 Tatu Ylonen.  See LICENSE and https://ylonen.org
+
 import unittest
 import wiktfinnish
 

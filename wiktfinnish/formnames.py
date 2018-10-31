@@ -2,7 +2,7 @@
 # iterators for enumerating all 5-tuples for possible inflectional forms for
 # any given part-of-speech.
 #
-# Copyright (c) 2018 Tatu Ylonen.  See LICENSE.
+# Copyright (c) 2018 Tatu Ylonen.  See LICENSE and https://ylonen.org
 
 # Names of comparative forms for adjectives (the empty string means positive,
 # or normal form).

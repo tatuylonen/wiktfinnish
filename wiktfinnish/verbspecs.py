@@ -9,7 +9,7 @@
 #
 # See nounspecs.py for how the entries are formatted.
 #
-# Copyright (c) 2018 Tatu Ylonen.  See COPYING.
+# Copyright (c) 2018 Tatu Ylonen.  See COPYING and https://ylonen.org
 
 verb_conjs = {
     "fi-conj-sanoa": {

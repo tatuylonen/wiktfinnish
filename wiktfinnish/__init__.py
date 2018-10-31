@@ -1,6 +1,6 @@
 # This file defines the public exports from the wiktfinnish module.
 #
-# Copyright (c) 2018 Tatu Ylonen.  See LICENSE.
+# Copyright (c) 2018 Tatu Ylonen.  See LICENSE and https://ylonen.org
 
 from wiktfinnish.formnames import COMP_FORMS, CASE_FORMS, POSSESSIVE_FORMS
 from wiktfinnish.formnames import VERB_FORMS, CLITIC_FORMS

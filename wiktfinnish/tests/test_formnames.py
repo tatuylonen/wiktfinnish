@@ -1,3 +1,7 @@
+# Tests for grammatical form names.
+#
+# Copyright (c) 2018 Tatu Ylonen.  See https://ylonen.org
+
 import unittest
 import wiktfinnish
 

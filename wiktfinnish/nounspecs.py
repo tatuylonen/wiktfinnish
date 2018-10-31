@@ -29,7 +29,7 @@
 #   - - deletes previos char but it is still used for vowel harmony
 #   / - deletes the char before last, but it is still used for vowel harmony
 #
-# Copyright (c) 2018 Tatu Ylonen.  See COPYING.
+# Copyright (c) 2018 Tatu Ylonen.  See COPYING and https://ylonen.org
 
 decl_name_map = {
     "fi-decl-kauneus": "fi-decl-kalleus",

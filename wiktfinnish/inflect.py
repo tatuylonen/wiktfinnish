@@ -1,7 +1,7 @@
 # Code for generating Finnish word forms from Wiktionary-compatible
 # declension/conjugation entries.
 #
-# Copyright (c) 2018 Tatu Ylonen.  See LICENSE.
+# Copyright (c) 2018 Tatu Ylonen.  See LICENSE and https://ylonen.org
 
 import re
 from wiktfinnish import nounspecs
