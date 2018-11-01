@@ -2,14 +2,13 @@
 #
 # Copyright (c) 2018 Tatu Ylonen, https://ylonen.org
 
-import setuptools
+from setuptools import setup
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
-from distutils.core import setup
 setup(name="wiktfinnish",
-      version="0.1.1",
+      version="0.1.4",
       description="Finnish morphology (including verb forms, comparatives, cases, possessives, clitics)",
       long_description=long_description,
       long_description_content_type="text/markdown",

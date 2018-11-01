@@ -703,14 +703,16 @@ def inflect_verbal(name, args, form, comp="", case="",
         return results
 
 
-def inflect(name, args, form):
+def inflect(name, args, form, force_n=False):
     """This is a generic Finnish word inflection function.  This inflects
     a word of class ``name``, having conjugation/declension arguments ``args``
     into the form indicated by ``form``.  The form is indicated by
     (vform, comp, case, poss, clitic).  This returns a list of
-    inflected forms, the most preferred one first."""
+    inflected forms, the most preferred one first.  If ``force_n`` is
+    True, generates requested number regardless of limitations specified in
+    ``args``."""
     if name not in CONJ_DECL_NAMES:
-        print("UNDEFINED DECLENSION/CONJUGATION:", name, pos, conj)
+        print("UNDEFINED DECLENSION/CONJUGATION:", name, conj)
         return []
     assert isinstance(args, dict)
     assert isinstance(form, (list, tuple))
@@ -722,4 +724,4 @@ def inflect(name, args, form):
     if not case:
         case = "nom-sg"
     return inflect_nominal(name, args, case, comp=comp, poss=poss,
-                           clitic=clitic)
+                           clitic=clitic, force_n=force_n)
