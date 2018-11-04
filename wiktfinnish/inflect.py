@@ -175,6 +175,8 @@ def process_template(template, args, ill_sg_vowel=None):
                 v = args[k]
             else:
                 v = args.get(x, "")
+            if v == "(')":
+                v = ""
             if x == "9":
                 if "par_sg_a" in args:
                     parts.append(args["par_sg_a"])
