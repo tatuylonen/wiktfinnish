@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(name="wiktfinnish",
-      version="0.1.4",
+      version="0.2.0",
       description="Finnish morphology (including verb forms, comparatives, cases, possessives, clitics)",
       long_description=long_description,
       long_description_content_type="text/markdown",
