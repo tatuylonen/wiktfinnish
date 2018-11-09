@@ -308,9 +308,11 @@ including "noun", "adj", "verb", "num", "pron", "adv", etc.  It can
 also take the following optional keyword arguments (more will likely
 be added later) to restrict the forms that are enumerated:
 
-* ``comparable``: if True (default), include comparison forms (for adjectives, adverbs)
 * ``transitive``: if True (default), include agent participle (forms that are only valid for verbs with an agent)
-* ``no_clitics``: if True, don't include forms with clitics (default is to include them)
+* ``no_comp``: If set to True, prevents inclusion of comparative forms (for adjectives, adverbs)
+* ``no_case``: If set to True, prevents inclusion of case forms (other than nominative singular)
+* ``no_poss``: If set to True, prevents inclusion of possessive suffixes
+* ``no_clitic``: if set to True, prevents inclusion of clitics.
 
 ### Fast way of obtaining list of possible forms for a part-of-speech
 

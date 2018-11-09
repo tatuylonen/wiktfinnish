@@ -324,6 +324,7 @@ def clean_exception(v):
     v = re.sub(r"''+", "", v)
     v = re.sub(r"(?is)<sup>.*?</sup>", "", v)
     v = re.sub(r"<[^>]*>", "", v)
+    v = re.sub("\u2019", "'", v)  # Note: no r"..." here!
     v = re.sub(r"\s+", " ", v)
     return v.strip()
 
@@ -714,7 +715,7 @@ def inflect(name, args, form, force_n=False):
     True, generates requested number regardless of limitations specified in
     ``args``."""
     if name not in CONJ_DECL_NAMES:
-        print("UNDEFINED DECLENSION/CONJUGATION:", name, conj)
+        print("UNDEFINED DECLENSION/CONJUGATION:", name)
         return []
     assert isinstance(args, dict)
     assert isinstance(form, (list, tuple))

@@ -180,87 +180,90 @@ def all_forms_list(*args, **kwargs):
     return forms
 
 
-def all_forms_iter(pos, comparable=True, transitive=True, no_clitics=False):
+def all_forms_iter(pos, transitive=True,
+                   no_comp=False, no_case=False, no_poss=False,
+                   no_clitic=False):
     """Returns an iterator that iterates over all possible word form
     descriptors for the given part-of-speech and other parameters."""
     assert isinstance(pos, str)
 
-    clitics = [""] if no_clitics else CLITIC_FORMS
+    comp_forms = [""] if no_comp else COMP_FORMS
+    case_forms = ["nom-sg"] if no_case else CASE_FORMS
+    poss_forms = [""] if no_poss else POSSESSIVE_FORMS
+    clitic_forms = [""] if no_clitic else CLITIC_FORMS
 
-    def fn():
-        if pos in ("noun", "name", "num", "letter"):
-            for case in CASE_FORMS:
-                for poss in POSSESSIVE_FORMS:
-                    if case in ("acc-sg", "acc-pl"):
-                        continue
-                    if case == "cmt-pl" and not poss:
-                        continue
-                    for clitic in clitics:
-                        if clitic in ('s', 'kA'):
-                            continue
-                        yield ("", "", case, poss, clitic)
-        elif pos == "pron":
-            # XXX other types of pronouns?  This is for perspron.
-            for case in CASE_FORMS:
-                if case in ("ins-sg", "ins-pl", "cmt"):
+    if pos in ("noun", "name", "num", "letter"):
+        for case in case_forms:
+            for poss in poss_forms:
+                if case in ("acc-sg", "acc-pl"):
                     continue
-                for clitic in clitics:
-                    if clitic in ("s", "kA"):
+                if case == "cmt-pl" and not poss:
+                    continue
+                for clitic in clitic_forms:
+                    if clitic in ('s', 'kA'):
                         continue
-                    yield ("", "", case, '', clitic)
-        elif pos == "adj":
-            comps = COMP_FORMS if comparable else [""]
+                    yield ("", "", case, poss, clitic)
+    elif pos == "pron":
+        # XXX other types of pronouns?  This is for perspron.
+        for case in case_forms:
+            if case in ("ins-sg", "ins-pl", "cmt"):
+                continue
+            for clitic in clitic_forms:
+                if clitic in ("s", "kA"):
+                    continue
+                yield ("", "", case, '', clitic)
+    elif pos == "adj":
+        for comp in comp_forms:
+            for case in case_forms:
+                if case in ("acc-sg", "acc-pl"):
+                    continue
+                for poss in poss_forms:
+                    for clitic in clitic_forms:
+                        if clitic in ('s',):
+                            continue
+                        yield ("", comp, case, poss, clitic)
+    elif pos == "verb":
+        for vform in VERB_FORMS:
+            if not transitive and vform == "agnt-part":
+                continue
+            comps = [""]
+            cases = [""]
+            posses = [""]
+            if vform in ("pres-part", "pres-pass-part",
+                         "past-part", "past-pass-part",
+                         "agnt-part", "nega-part"):
+                cases = case_forms
+            if vform in ("inf1-long", "inf2-ine",
+                         "inf3-ine", "inf3-ela",
+                         "inf3-ill", "inf3-ade",
+                         "inf3-abe", "inf4-par",
+                         "inf5", "agnt-part", "pres-pass-part",
+                         "pres-part"):
+                posses = poss_forms
+            if vform in ("pres-part", "past-part",
+                         "pres-pass-part", "past-pass-part"):
+                comps = comp_forms
             for comp in comps:
-                for case in CASE_FORMS:
+                for case in cases:
                     if case in ("acc-sg", "acc-pl"):
                         continue
-                    for poss in POSSESSIVE_FORMS:
-                        for clitic in clitics:
-                            if clitic in ('s',):
-                                continue
-                            yield ("", comp, case, poss, clitic)
-        elif pos == "verb":
-            for vform in VERB_FORMS:
-                if not transitive and vform == "agnt-part":
-                    continue
-                comps = [""]
-                cases = [""]
-                posses = [""]
-                if vform in ("pres-part", "pres-pass-part",
-                             "past-part", "past-pass-part",
-                             "agnt-part", "nega-part"):
-                    cases = CASE_FORMS
-                if vform in ("inf1-long", "inf2-ine",
-                             "inf3-ine", "inf3-ela",
-                             "inf3-ill", "inf3-ade",
-                             "inf3-abe", "inf4-par",
-                             "inf5", "agnt-part", "pres-pass-part",
-                             "pres-part"):
-                    posses = POSSESSIVE_FORMS
-                if vform in ("pres-part", "past-part",
-                             "pres-pass-part", "past-pass-part"):
-                    comps = COMP_FORMS if comparable else [""]
-                for comp in comps:
-                    for case in cases:
-                        if case in ("acc-sg", "acc-pl"):
+                    for poss in posses:
+                        if (not no_poss and not poss and
+                            vform in ("inf1-long", "inf5")):
                             continue
-                        for poss in posses:
-                            if not poss and vform in ("inf1-long", "inf5"):
-                                continue
-                            if (poss and case != "nom-sg" and
-                                vform in ("pres-part", "past-pass-part")):
-                                continue
-                            for clitic in clitics:
-                                yield (vform, comp, case, poss, clitic)
-        elif pos in ("conj", "intj", "suffix", "clitic", "punct"):
-            yield ("", "", "", "", "")
-        elif pos in ("postp", "prep", "adv"):
-            for clitic in clitics:
-                yield ("", "", "", "", clitic)
-                if pos == "adv":
-                    yield ("", "comp", "", "", clitic)
-                    yield ("", "sup", "", "", clitic)
-        else:
-            print("all_forms_iter: unimplemented pos:", pos)
-            yield ("", "", "", "", "")
-    return fn()
+                        if (poss and case != "nom-sg" and
+                            vform in ("pres-part", "past-pass-part")):
+                            continue
+                        for clitic in clitic_forms:
+                            yield (vform, comp, case, poss, clitic)
+    elif pos in ("conj", "intj", "suffix", "clitic", "punct"):
+        yield ("", "", "", "", "")
+    elif pos in ("postp", "prep", "adv"):
+        for clitic in clitic_forms:
+            yield ("", "", "", "", clitic)
+            if pos == "adv":
+                yield ("", "comp", "", "", clitic)
+                yield ("", "sup", "", "", clitic)
+    else:
+        print("all_forms_iter: unimplemented pos:", pos)
+        yield ("", "", "", "", "")

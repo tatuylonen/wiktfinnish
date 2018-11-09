@@ -83,7 +83,7 @@ class TestForms(unittest.TestCase):
             assert clitic in wiktfinnish.CLITIC_FORMS
         assert cnt > 3000 and cnt < 9000
         assert num_comp > 0
-        for form in wiktfinnish.all_forms_iter("adj", comparable=False):
+        for form in wiktfinnish.all_forms_iter("adj", no_comp=True):
             cnt += 1
             vform, comp, case, poss, clitic = form
             assert vform == ""
@@ -91,8 +91,8 @@ class TestForms(unittest.TestCase):
             assert case in wiktfinnish.CASE_FORMS
             assert poss in wiktfinnish.POSSESSIVE_FORMS
             assert clitic in wiktfinnish.CLITIC_FORMS
-        for form in wiktfinnish.all_forms_iter("adj", comparable=False,
-                                               no_clitics=True):
+        for form in wiktfinnish.all_forms_iter("adj", no_comp=True,
+                                               no_clitic=True):
             cnt += 1
             vform, comp, case, poss, clitic = form
             assert vform == ""
@@ -101,7 +101,7 @@ class TestForms(unittest.TestCase):
             assert poss in wiktfinnish.POSSESSIVE_FORMS
             assert clitic == ""
         num_comp = 0
-        for form in wiktfinnish.all_forms_iter("adj", no_clitics=True):
+        for form in wiktfinnish.all_forms_iter("adj", no_clitic=True):
             cnt += 1
             vform, comp, case, poss, clitic = form
             assert vform == ""
@@ -153,13 +153,46 @@ class TestForms(unittest.TestCase):
         lst = list(wiktfinnish.all_forms_iter("bogus-nonex"))
         assert lst == [("", "", "", "", "")]
 
-    def test_list_noun(self):
+    def test_list_verb(self):
         x = list(wiktfinnish.all_forms_iter("verb"))
-        y = wiktfinnish.all_forms_list("verb")
-        assert list(sorted(x)) == list(sorted(y))
-        x = list(wiktfinnish.all_forms_iter("adj", comparable=False))
-        y = wiktfinnish.all_forms_list("adj", comparable=False)
+        xx = wiktfinnish.all_forms_list("verb")
+        assert list(sorted(x)) == list(sorted(xx))
+        y = wiktfinnish.all_forms_list("verb", no_comp=True)
+        assert len(x) > len(y)
+        for form in y:
+            assert form in x
+        y = wiktfinnish.all_forms_list("verb", no_case=True)
+        assert len(x) > len(y)
+        for form in y:
+            assert form in x
+        y = wiktfinnish.all_forms_list("verb", no_poss=True)
+        assert len(x) > len(y)
+        # In this case, some of the forms may not be in x
+        y = wiktfinnish.all_forms_list("verb", no_clitic=True)
+        assert len(x) > len(y)
+        for form in y:
+            assert form in x
+
+    def test_list_adj(self):
+        x = wiktfinnish.all_forms_list("adj")
+        assert isinstance(x, (list, tuple))
+        y = wiktfinnish.all_forms_list("adj", no_comp=True)
         assert isinstance(y, (list, tuple))
-        z = wiktfinnish.all_forms_list("adj")
-        assert list(sorted(x)) == list(sorted(y))
-        assert x != z
+        assert len(x) > len(y)
+        for form in y:
+            assert form in x
+        z = wiktfinnish.all_forms_list("adj", no_comp=True, no_case=True)
+        assert len(y) > len(z)
+        for form in z:
+            assert form in y
+
+    def test_list_noun(self):
+        x = wiktfinnish.all_forms_list("noun")
+        y = wiktfinnish.all_forms_list("noun", no_case=True)
+        assert len(x) > len(y)
+        for form in y:
+            assert form in x
+        z = wiktfinnish.all_forms_list("noun", no_case=True, no_poss=True)
+        assert len(y) > len(z)
+        for form in z:
+            assert form in y
