@@ -155,9 +155,10 @@ CLITIC_FORMS = ("",
                 "pAhAn",
                 "pAs",
                 "kOs",
-                "kinkO",
-                "kAAnkO",
-                "kinkOhAn")
+                #"kinkO",   # These aren't used in Finnish treebank
+                #"kAAnkO",
+                #"kinkOhAn",
+)
 
 ######################################################################
 # The rest of file is about enumerating 5-tuples representing

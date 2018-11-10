@@ -2254,6 +2254,10 @@ noun_decls = {
         "split": (1, "fi-decl-kala", 6, "fi-decl-risti"),
     },
 
+    "fi-decl-kala-koira": {
+        "split": (1, "fi-decl-kala", 6, "fi-decl-koira"),
+    },
+
     "fi-decl": {
         # This declension is used for irregular nominals, and all forms are
 	# expressly stated in the template.
