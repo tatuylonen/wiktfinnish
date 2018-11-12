@@ -668,7 +668,8 @@ def inflect_verbal(name, args, form, comp="", case="",
 
     # Inflect the form using templates.
     results = inflect_using(verbspecs.verb_conjs, name, args, form,
-                            case != "nom_sg" or poss != "", clitic != "")
+                            case not in ("", "nom_sg") or
+                            poss != "", clitic != "")
 
     if case:
         results2 = []

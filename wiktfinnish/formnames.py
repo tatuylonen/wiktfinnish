@@ -237,7 +237,7 @@ def all_forms_iter(pos, transitive=True,
             if vform in ("inf1-long", "inf2-ine",
                          "inf3-ine", "inf3-ela",
                          "inf3-ill", "inf3-ade",
-                         "inf3-abe", "inf4-par",
+                         "inf3-abe", "inf4-nom", "inf4-par",
                          "inf5", "agnt-part", "pres-pass-part",
                          "pres-part"):
                 posses = poss_forms
