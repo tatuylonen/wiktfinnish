@@ -39,6 +39,7 @@ decl_name_map = {
 noun_decls = {
     "fi-decl-valo": {
     	"nargs": 5,
+	"default": {"4": "o"},
         "nom-sg": "124",
         "gen-sg": "134n",
         "gen-sg-poss": "124",
@@ -162,6 +163,7 @@ noun_decls = {
     },
     "fi-decl-laatikko": {
     	"nargs": 5,
+	"default": {"4": "o"},
         "nom-sg": "124",
         "gen-sg": "134n",
         "gen-sg-poss": "124",
@@ -368,6 +370,7 @@ noun_decls = {
     },
     "fi-decl-kala": {
     	"nargs": 4,
+	"default": {"4": "a"},
         "nom-sg": "124",
         "gen-sg": "134n",
         "gen-sg-poss": "124",
@@ -409,6 +412,7 @@ noun_decls = {
     },
     "fi-decl-koira": {
     	"nargs": 4,
+	"default": {"4": "a"},
         "nom-sg": "124",
         "gen-sg": "134n",
         "gen-sg-poss": "124",
@@ -450,6 +454,7 @@ noun_decls = {
     },
     "fi-decl-omena": {
     	"nargs": 2,
+	"default": {"2": "a"},
         "nom-sg": "12",
         "gen-sg": "12n",
         "gen-sg-poss": "12",
@@ -492,6 +497,7 @@ noun_decls = {
     },
     "fi-decl-kulkija": {
     	"nargs": 2,
+	"default": {"2": "a"},
         "nom-sg": "12",
         "gen-sg": "12n",
         "gen-sg-poss": "12",
@@ -533,6 +539,7 @@ noun_decls = {
     },
     "fi-decl-katiska": {
     	"nargs": 2,
+	"default": {"2": "a"},
         "nom-sg": "12",
         "gen-sg": "12n",
         "gen-sg-poss": "12",
@@ -576,6 +583,7 @@ noun_decls = {
     },
     "fi-decl-solakka": {
     	"nargs": 4,
+	"default": {"4": "a"},
         "nom-sg": "124",
         "gen-sg": "134n",
         "gen-sg-poss": "124",
@@ -619,6 +627,7 @@ noun_decls = {
     },
     "fi-decl-korkea": {
     	"nargs": 2,
+	"default": {"2": "a"},
         "nom-sg": "12",
         "gen-sg": "12n",
         "gen-sg-poss": "12",
@@ -1328,6 +1337,7 @@ noun_decls = {
     },
     "fi-decl-kytkin": {
     	"nargs": 5,
+	"default": {"4": "i"},
         "nom-sg": "124n",
         "nom-sg-poss": "134me",
         "gen-sg": "134men",
@@ -1662,6 +1672,7 @@ noun_decls = {
     },
     "fi-decl-vieras": {
     	"nargs": 5,
+	"default": {"4": "a"},
         "nom-sg": "124s",
         "nom-sg-poss": "1344",
         "gen-sg": "1344n",
@@ -1746,6 +1757,7 @@ noun_decls = {
     },
     "fi-decl-ohut": {
     	"nargs": 5,
+	"default": {"4": "u"},
         "nom-sg": "124t",
         "nom-sg-poss": "134e",
         "gen-sg": "134en",
@@ -2256,6 +2268,10 @@ noun_decls = {
 
     "fi-decl-kala-koira": {
         "split": (1, "fi-decl-kala", 6, "fi-decl-koira"),
+    },
+
+    "fi-decl-koira-vieras": {
+        "split": (1, "fi-decl-koira", 5, "fi-decl-vieras"),
     },
 
     "fi-decl": {

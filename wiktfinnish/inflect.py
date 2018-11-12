@@ -206,9 +206,11 @@ def process_template(template, args, ill_sg_vowel=None):
                                   p)
                     if m:
                         parts.append("e")
-                    else:
+                    elif p:
                         ch = last_char_to_vowel(p[-1])
                         parts.append(ch)
+                    else:
+                        parts.append("a")
         elif x == "A":
             a = args.get("par_sg_a", None)
             if a:
@@ -407,21 +409,28 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                 if isinstance(x, int):
                     if x < start or x >= end:
                         continue
-                    new_args[x - start + 1] = v
+                    new_args[str(x - start + 1)] = v
                 elif isinstance(x, str) and x.isdigit():
                     x = int(x)
                     if x < start or x >= end:
                         continue
-                    new_args[x - start + 1] = v
+                    new_args[str(x - start + 1)] = v
                 elif (x in ("par_sg_a", "ill_sg_vowel", "ill_sg_vowel2") and
                       not last_part):
                     # Put ill_sg_a only in last one (KLUDGE!)
                     pass
                 else:
                     new_args[x] = v
+            defargs = decls.get(new_name, {}).get("default", {})
+            for x, v in defargs.items():
+                if x not in new_args:
+                    #print("Adding default arg", x, v, new_args)
+                    new_args[x] = v
+            #print("split:", new_name, new_args, form)
             ret = inflect_using(decls, new_name, new_args, form,
                                 last_part and use_poss,
                                 last_part and use_clitic)
+            #print("split ret:", ret)
             if not results:
                 results.extend(ret)
             else:

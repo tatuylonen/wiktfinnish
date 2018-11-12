@@ -155,9 +155,9 @@ CLITIC_FORMS = ("",
                 "pAhAn",
                 "pAs",
                 "kOs",
-                #"kinkO",   # These aren't used in Finnish treebank
-                #"kAAnkO",
-                #"kinkOhAn",
+                "kinkO",   # Last three aren't used in Finnish treebank
+                "kAAnkO",
+                "kinkOhAn",
 )
 
 ######################################################################
