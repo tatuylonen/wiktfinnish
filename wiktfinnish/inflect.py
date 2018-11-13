@@ -333,6 +333,7 @@ def clean_exception(v):
     v = re.sub(r"(?is)<sup>.*?</sup>", "", v)
     v = re.sub(r"<[^>]*>", "", v)
     v = re.sub("\u2019", "'", v)  # Note: no r"..." here!
+    v = re.sub(r" abbr. .*", "", v)
     v = re.sub(r"\s+", " ", v)
     return v.strip()
 
