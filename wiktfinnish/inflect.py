@@ -304,14 +304,20 @@ def add_possessive(results, form, poss):
 
 def add_clitic(results, clitic):
     """Adds a clitic to the results."""
-    if not clitic:
+    if not clitic or clitic == "__dummy__":  # dummy used tatufin/makemorph.py
         return results
 
     results2 = []
     for v in results:
         args = {"1": v}
         ret = process_template("1" + clitic, args)
-        if ret:
+        results2.append(ret)
+        if clitic == "kOs" and v[-1] not in "bcdfghjklmpqrstvwxz":
+            ret = process_template("1" + "ks", args)
+            results2.append(ret)
+        if clitic == "kOs" and v[-1] == "t":
+            args = {"1": v[:-1]}
+            ret = process_template("1" + "ks", args)
             results2.append(ret)
     return results2
 
