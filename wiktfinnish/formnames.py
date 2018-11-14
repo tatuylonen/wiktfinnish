@@ -138,6 +138,8 @@ VERB_FORMS = (
     "inf3-pass-ins",
     "inf4-nom",
     "inf4-par",
+    # XXX at least inf4+ine seems to be used, probably ela too
+    # probably tra
     "inf5",
 )
 
@@ -239,7 +241,7 @@ def all_forms_iter(pos, transitive=True,
                          "inf3-ill", "inf3-ade",
                          "inf3-abe", "inf4-nom", "inf4-par",
                          "inf5", "agnt-part", "pres-pass-part",
-                         "pres-part"):
+                         "pres-part", "past-pass-part"):
                 posses = poss_forms
             if vform in ("pres-part", "past-part",
                          "pres-pass-part", "past-pass-part"):

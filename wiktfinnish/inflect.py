@@ -657,7 +657,7 @@ def inflect_verbal(name, args, form, comp="", case="",
     assert comp in formnames.COMP_FORMS
     assert isinstance(clitic, str)
 
-    if not poss and form in ("inf1-long", "agnt-part", "inf5"):
+    if not poss and form in ("inf1-long", "inf5"):
         poss = "3x"
     if form in ("pres-part", "pres-pass-part",
                 "past-part", "past-pass-part", "agnt-part",
