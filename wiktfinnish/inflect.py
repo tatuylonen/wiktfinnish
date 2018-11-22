@@ -678,7 +678,6 @@ def inflect_verbal(name, args, vform, comp="", case="",
                 args = {"1": v[:-2], "2": word_to_aae(v),
                         "pos": "adj"}
             elif vform == "past-pass-part":
-                print(vform, case, v)
                 name = "fi-decl-valo"
                 if v.endswith("ttu") or v.endswith("tty"):
                     args = {"1": v[:-3], "2": "tt", "3": "t",
