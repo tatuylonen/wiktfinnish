@@ -24,7 +24,7 @@ EMPTY_CHAR = "\uf8ff"
 argument_name_map = {
     # For fi-conj
     "pres-neg": ["pres_conn", "pres_3sg_neg"],
-    "pres-pass-neg": ["pres_pass_conn"],
+    "pres-pass-neg": ["pres_pass_conn", "pres_pass_neg"],
     "cond-3sg-or-neg": ["cond_conn", "cond_3sg_neg"],
     "cond-pass-neg": ["cond_pass_conn"],
     "impr-2sg": ["pres_conn"],
