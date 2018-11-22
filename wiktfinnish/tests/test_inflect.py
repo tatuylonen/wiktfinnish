@@ -450,7 +450,7 @@ testcases = [
      [("past-2pl", "", "", "", ""), "olitte"],
      [("past-3pl", "", "", "", ""), "olivat"],
      [("past-pass", "", "", "", ""), "oltiin"],
-     [("past-1sg-neg", "", "", "", ""), "ollut"],
+     [("past-part", "", "", "", ""), "ollut"],
      [("pres-part", "", "", "", ""), "oleva"],
      ],
     ["fi-conj-ei", {},

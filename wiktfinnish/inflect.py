@@ -25,13 +25,6 @@ argument_name_map = {
     # For fi-conj
     "pres-neg": ["pres_conn", "pres_3sg_neg"],
     "pres-pass-neg": ["pres_pass_conn"],
-    "past-1sg-neg": ["past_part"],
-    "past-2sg-neg": ["past_part"],
-    "past-3sg-neg": ["past_part"],
-    "past-1pl-neg": ["past_part_pl"],
-    "past-2pl-neg": ["past_part_pl"],
-    "past-3pl-neg": ["past_part_pl"],
-    "past-pass-neg": ["past_pass_part"],
     "cond-3sg-or-neg": ["cond_conn", "cond_3sg_neg"],
     "cond-pass-neg": ["cond_pass_conn"],
     "impr-2sg": ["pres_conn"],
