@@ -669,15 +669,24 @@ def inflect_verbal(name, args, vform, comp="", case="",
         results2 = []
         for v in results:
             if vform in ("pres-part", "pres-pass-part", "agnt-part"):
+                if len(v) < 4:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 name = "fi-decl-koira"
                 args = {"1": v[:-1], "2": "", "3": "",
                         "4": word_to_aae(v),
                         "pos": "adj"}
             elif vform == "past-part":
+                if len(v) < 4:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 name = "fi-decl-kuollut"
                 args = {"1": v[:-2], "2": word_to_aae(v),
                         "pos": "adj"}
             elif vform == "past-pass-part":
+                if len(v) < 4:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 name = "fi-decl-valo"
                 if v.endswith("ttu") or v.endswith("tty"):
                     args = {"1": v[:-3], "2": "tt", "3": "t",
@@ -694,21 +703,33 @@ def inflect_verbal(name, args, vform, comp="", case="",
                             "5": word_to_aae(v),
                             "pos": "adj"}
             elif vform in ("inf2", "inf2-pass"):
+                if len(v) < 5:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 assert v[-4:] in ("essa", "essä")
                 name = "fi-decl-inf2"
                 args = {"1": v[:-3],
                         "2": v[-1]}
             elif vform == "inf3":
+                if len(v) < 6:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 assert v[-5:] in ("massa", "mässä")
                 name = "fi-decl-inf3"
                 args = {"1": v[:-3],
                         "2": v[-1]}
             elif vform == "inf3-pass":
+                if len(v) < 4:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 assert v[-3:] in ("man", "män")
                 name = "fi-decl-inf3"
                 args = {"1": v[:-1],
                         "2": v[-1]}
             elif vform == "inf4":
+                if len(v) < 4:
+                    print("Invalid", vform, v, name, args)
+                    continue
                 assert v.endswith("nen")
                 name = "fi-decl-nainen"
                 args = {"1": v[:-3],

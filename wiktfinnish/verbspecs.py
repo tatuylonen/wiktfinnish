@@ -1750,7 +1750,7 @@ verb_conjs = {
         "inf1": "virkkaa",
         "inf1-long": "virkkaessa",  # +poss_suff
         "inf2": "virkkaessa",
-        "inf2-pass": "virkkamassa",
+        "inf2-pass": "virkettäessä",
         "inf3": "virkkamassa",
         "inf3-pass": "virkettämän",
         "inf4": "virkkaminen",
