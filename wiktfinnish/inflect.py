@@ -35,18 +35,11 @@ argument_name_map = {
     "potn-pass-neg": ["potn_pass_conn"],
     # Note: these verbs may not have inf1 (see discussion win Wiktionary:kutiaa)
     "inf1-long": ["inf1_longa"],
-    "inf2-ine": ["inf2_ines"],
-    "inf2-pass-ine": ["inf2_pass_ines"],
-    "inf2-ins": ["inf2_inst"],
-    "inf3-ine": ["inf3_ines"],
-    "inf3-ela": ["inf3_elat"],
-    "inf3-ill": ["inf3_illa"],
-    "inf3-ade": ["inf3_ades"],
-    "inf3-abe": ["inf3_inst"],
-    "inf3-ins": ["inf3_inst"],
-    "inf3-pass-ins": ["inf3_pass_inst"],
-    "inf4-nom": ["inf4_nomi"],
-    "inf4-par": ["inf4_part"],
+    "inf2": ["inf2_ines"],
+    "inf2-pass": ["inf2_pass_ines"],
+    "inf3": ["inf3_ines"],
+    "inf3-pass": ["inf3_pass_inst"],
+    "inf4": ["inf4_nomi"],
 
     # For fi-decl-pron and fi-decl
     "nom-sg": ["1s", "word"],
@@ -266,12 +259,11 @@ def add_possessive(results, form, poss):
                         "abl-sg", "abl-pl", "tra-sg", "tra-pl",
                         "ess-sg", "ess-pl", "abe-sg", "abe-pl",
                         "ptv-sg", "ptv-pl", "cmt",
-                        "inf1-long", "inf2-ine", "inf3-ine",
-                        "inf3-ela", "inf3-ade",
-                        "inf3-abe", "inf4-nom", "inf4-par",
-                        "inf5"):
+                        "inf1-long", "inf2", "inf3", "inf4", "inf5"):
                     continue
-                if len(v) > 2 and v[-2] == v[-1]:
+                if len(v) < 2 or v[-1] not in "aeiouyäö":
+                    continue
+                if v[-2] == v[-1]:
                     continue
                 v += v[-1]
                 v += suffix[1:]
@@ -622,10 +614,10 @@ def inflect_nominal(name, args, form, comp="", poss="",
     return results
 
 
-def inflect_verbal(name, args, form, comp="", case="",
+def inflect_verbal(name, args, vform, comp="", case="",
                    poss="", clitic=""):
     """Inflects the word whose declension/conjugation information is in
-    ``args`` to the form indicated by ``form``.  ``poss`` indicates
+    ``args`` to the form indicated by ``vform``.  ``poss`` indicates
     optional possessive suffix form(s).  Returns None if the
     form is invalid for the word."""
     if name not in verbspecs.verb_conjs:
@@ -634,47 +626,59 @@ def inflect_verbal(name, args, form, comp="", case="",
             print("inflect_verbal: unrecognized verb conjucation", name, "for",
                   args)
         return []
-    if form not in formnames.VERB_FORMS:
-        print("INVALID VERB FORM:", form)
-    assert form in formnames.VERB_FORMS
+    if vform not in formnames.VERB_FORMS:
+        print("INVALID VERB FORM:", vform)
+    assert vform in formnames.VERB_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
     assert comp in formnames.COMP_FORMS
     assert isinstance(clitic, str)
 
-    if not poss and form in ("inf1-long", "inf5"):
+    if not poss and vform in ("inf1-long", "inf5"):
         poss = "3x"
-    if form in ("pres-part", "pres-pass-part",
-                "past-part", "past-pass-part", "agnt-part",
-                "nega-part"):
+    if vform == "inf2" and not case:
+        case = "ins-sg"
+    elif vform == "inf2-pass" and not case:
+        case = "ins-sg"
+    elif vform == "inf3" and not case:
+        case = "ins-sg"
+    elif vform == "inf3-pass" and not case:
+        case = "ins-sg"
+    elif vform in ("pres-part", "pres-pass-part",
+                   "past-part", "past-pass-part", "agnt-part",
+                   "nega-part", "inf2", "inf2-pass", "inf3", "inf3-pass",
+                   "inf4"):
         if not case:
             case = "nom-sg"
     elif case and case != "nom-sg":
-        print("Case not allowed for", form)
+        print("Case not allowed for", vform)
         case = None
 
     # Default fi-conj-kumajaa to arg2 "a" (needed for "vipajaa")
+    # XXX is this still needed?  I think a more generic default has been
+    # implemented in inflect_using().  Test.
     if name == "fi-conj-kumajaa" and "2" not in args and 2 not in args:
         args = args.copy()
         args[2] = "a"
 
     # Inflect the form using templates.
-    results = inflect_using(verbspecs.verb_conjs, name, args, form,
+    results = inflect_using(verbspecs.verb_conjs, name, args, vform,
                             case not in ("", "nom_sg") or
                             poss != "", clitic != "")
 
     if case:
         results2 = []
         for v in results:
-            if form in ("pres-part", "pres-pass-part", "agnt-part"):
+            if vform in ("pres-part", "pres-pass-part", "agnt-part"):
                 name = "fi-decl-koira"
                 args = {"1": v[:-1], "2": "", "3": "",
                         "4": word_to_aae(v),
                         "pos": "adj"}
-            elif form == "past-part":
+            elif vform == "past-part":
                 name = "fi-decl-kuollut"
                 args = {"1": v[:-2], "2": word_to_aae(v),
                         "pos": "adj"}
-            elif form == "past-pass-part":
+            elif vform == "past-pass-part":
+                print(vform, case, v)
                 name = "fi-decl-valo"
                 if v.endswith("ttu") or v.endswith("tty"):
                     args = {"1": v[:-3], "2": "tt", "3": "t",
@@ -690,8 +694,28 @@ def inflect_verbal(name, args, form, comp="", case="",
                             "4": "u" if needs_aou(v) else "y",
                             "5": word_to_aae(v),
                             "pos": "adj"}
+            elif vform in ("inf2", "inf2-pass"):
+                assert v[-4:] in ("essa", "essä")
+                name = "fi-decl-inf2"
+                args = {"1": v[:-3],
+                        "2": v[-1]}
+            elif vform == "inf3":
+                assert v[-5:] in ("massa", "mässä")
+                name = "fi-decl-inf3"
+                args = {"1": v[:-3],
+                        "2": v[-1]}
+            elif vform == "inf3-pass":
+                assert v[-3:] in ("man", "män")
+                name = "fi-decl-inf3"
+                args = {"1": v[:-1],
+                        "2": v[-1]}
+            elif vform == "inf4":
+                assert v.endswith("nen")
+                name = "fi-decl-nainen"
+                args = {"1": v[:-3],
+                        "2": word_to_aae(v)}
             else:
-                assert form == "nega-part"
+                assert vform == "nega-part"
                 name = "fi-decl-onneton"
                 args = {"1": v[:-3], "2": word_to_aae(v),
                         "pos": "adj"}
@@ -701,7 +725,7 @@ def inflect_verbal(name, args, form, comp="", case="",
         return results2
     else:
         # Add possessive suffix
-        results = add_possessive(results, form, poss)
+        results = add_possessive(results, vform, poss)
         # Add any clitic or other suffix.
         results = add_clitic(results, clitic)
         return results

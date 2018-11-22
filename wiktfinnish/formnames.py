@@ -99,6 +99,12 @@ VERB_FORMS = (
     "nega-part",
     "inf1",
     "inf1-long",
+    "inf2",
+    "inf2-pass",
+    "inf3",
+    "inf3-pass",
+    "inf4",
+    # XXX remove others
     "inf2-ine",
     "inf2-pass-ine",
     "inf2-ins",
@@ -204,25 +210,39 @@ def all_forms_iter(pos, transitive=True,
                 continue
             comps = [""]
             cases = [""]
-            posses = [""]
             if vform in ("pres-part", "pres-pass-part",
                          "past-part", "past-pass-part",
                          "agnt-part", "nega-part"):
                 cases = case_forms
-            if vform in ("inf1-long", "inf2-ine",
-                         "inf3-ine", "inf3-ela",
-                         "inf3-ill", "inf3-ade",
-                         "inf3-abe", "inf4-nom", "inf4-par",
-                         "inf5", "agnt-part", "pres-pass-part",
-                         "pres-part", "past-pass-part"):
-                posses = poss_forms
+            elif vform == "inf2":
+                cases = ("ine-sg", "ins-sg")
+            elif vform == "inf2-pass":
+                cases = ("ine-sg",)
+            elif vform == "inf3":
+                cases = ("ine-sg", "ela-sg", "ill-sg", "ade-sg", "abe-sg",
+                         "ins-sg")
+            elif vform == "inf3-pass":
+                cases = ("ins-sg",)
+            elif vform == "inf4":
+                cases = ("nom-sg", "ptv-sg")
             if vform in ("pres-part", "past-part",
                          "pres-pass-part", "past-pass-part"):
                 comps = comp_forms
             for comp in comps:
                 for case in cases:
                     if case in ("acc-sg", "acc-pl"):
-                        continue
+                        continue  # Accusative used only for pronouns
+                    posses = [""]
+                    if (vform in ("inf1-long", "inf5", "agnt-part",
+                                  "pres-pass-part",
+                                  "pres-part", "past-pass-part") or
+                        (vform == "inf2" and case == "ine-sg") or
+                        (vform == "inf3" and case in ("ine-sg", "ela-sg",
+                                                      "ill-sg", "ade-sg",
+                                                      "abe-sg",
+                                                      "ins-sg")) or
+                        (vform == "inf4" and case in ("nom-sg", "ptv-sg"))):
+                        posses = poss_forms
                     for poss in posses:
                         if (not no_poss and not poss and
                             vform in ("inf1-long", "inf5")):

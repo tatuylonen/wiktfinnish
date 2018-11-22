@@ -2130,6 +2130,22 @@ noun_decls = {
         "comp": "1:mpi",  # Not used?
         "sup": "1:in",  # Not used?
     },
+    "fi-decl-inf2": {
+        "internal": True,
+    	"nargs": 2,
+        "ine-sg": "1ss2",
+        "ins-sg": "1n",
+    },
+    "fi-decl-inf3": {
+        "internal": True,
+    	"nargs": 2,
+        "ine-sg": "1ss2",
+        "ela-sg": "1st2",
+        "ill-sg": "1@n",
+        "ade-sg": "1ll2",
+        "abe-sg": "1tt2",
+        "ins-sg": "1n",
+    },
 
     "fi-decl-käsi-kulkija": {
         "split": (1, "fi-decl-käsi", 3, "fi-decl-kulkija"),
