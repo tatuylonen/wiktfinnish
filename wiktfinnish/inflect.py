@@ -23,12 +23,7 @@ EMPTY_CHAR = "\uf8ff"
 # irregular cases).
 argument_name_map = {
     # For fi-conj
-    "pres-1sg-neg": ["pres_conn"],
-    "pres-2sg-neg": ["pres_conn"],
-    "pres-3sg-neg": ["pres_conn"],
-    "pres-1pl-neg": ["pres_conn"],
-    "pres-2pl-neg": ["pres_conn"],
-    "pres-3pl-neg": ["pres_conn"],
+    "pres-neg": ["pres_conn", "pres_3sg_neg"],
     "pres-pass-neg": ["pres_pass_conn"],
     "past-1sg-neg": ["past_part"],
     "past-2sg-neg": ["past_part"],
@@ -37,27 +32,13 @@ argument_name_map = {
     "past-2pl-neg": ["past_part_pl"],
     "past-3pl-neg": ["past_part_pl"],
     "past-pass-neg": ["past_pass_part"],
-    "cond-3sg": ["cond_conn"],
-    "cond-1sg-neg": ["cond_conn"],
-    "cond-2sg-neg": ["cond_conn"],
-    "cond-3sg-neg": ["cond_conn"],
-    "cond-1pl-neg": ["cond_conn"],
-    "cond-2pl-neg": ["cond_conn"],
-    "cond-3pl-neg": ["cond_conn"],
+    "cond-3sg-or-neg": ["cond_conn", "cond_3sg_neg"],
     "cond-pass-neg": ["cond_pass_conn"],
     "impr-2sg": ["pres_conn"],
     "impr-2sg-neg": ["pres_conn"],
-    "impr-3sg-neg": ["impr_conn"],
-    "impr-1pl-neg": ["impr_conn"],
-    "impr-2pl-neg": ["impr_conn"],
-    "impr-3pl-neg": ["impr_conn"],
+    "impr-neg": ["impr_conn", "impr_3sg_neg"],
     "impr-pass-neg": ["impr_pass_conn"],
-    "potn-1sg-neg": ["potn_conn"],
-    "potn-2sg-neg": ["potn_conn"],
-    "potn-3sg-neg": ["potn_conn"],
-    "potn-1pl-neg": ["potn_conn"],
-    "potn-2pl-neg": ["potn_conn"],
-    "potn-3pl-neg": ["potn_conn"],
+    "potn-neg": ["potn_conn", "potn_3sg_neg"],
     "potn-pass-neg": ["potn_pass_conn"],
     # Note: these verbs may not have inf1 (see discussion win Wiktionary:kutiaa)
     "inf1-long": ["inf1_longa"],
@@ -660,6 +641,8 @@ def inflect_verbal(name, args, form, comp="", case="",
             print("inflect_verbal: unrecognized verb conjucation", name, "for",
                   args)
         return []
+    if form not in formnames.VERB_FORMS:
+        print("INVALID VERB FORM:", form)
     assert form in formnames.VERB_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
     assert comp in formnames.COMP_FORMS
