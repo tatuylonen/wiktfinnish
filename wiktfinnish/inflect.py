@@ -89,7 +89,6 @@ argument_name_map = {
     "tra-sg": ["12s"],
     "ins-sg": ["13s"],
     "abe-sg": ["14s"],
-    "cmt-sg": ["15s", "com_pl"],
     "nom-pl": ["1p"],
     "gen-pl": ["2p"],
     "ptv-pl": ["3p", "par_pl"],
@@ -104,7 +103,7 @@ argument_name_map = {
     "tra-pl": ["12p"],
     "ins-pl": ["13p"],
     "abe-pl": ["14p"],
-    "cmt-pl": ["15p", "com_pl"],
+    "cmt": ["15p", "com_pl"],
     # superessive "a1s": "siellä",
     # delative "a2s": "sieltä",
     # sublative "a3s": "sinne",
@@ -118,6 +117,11 @@ argument_name_map = {
     # situative a11s
     # oppositive a12s
 }
+
+
+# Set of conjugations/declensions for which an undefined warning has already
+# been printed
+undef_decl_warned = set()
 
 
 def needs_aou(word):
@@ -287,7 +291,7 @@ def add_possessive(results, form, poss):
                         "all-sg", "all-pl", "ade-sg", "ade-pl",
                         "abl-sg", "abl-pl", "tra-sg", "tra-pl",
                         "ess-sg", "ess-pl", "abe-sg", "abe-pl",
-                        "ptv-sg", "ptv-pl", "cmt-sg", "cmt-pl",
+                        "ptv-sg", "ptv-pl", "cmt",
                         "inf1-long", "inf2-ine", "inf3-ine",
                         "inf3-ela", "inf3-ade",
                         "inf3-abe", "inf4-nom", "inf4-par",
@@ -481,7 +485,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                     #      name, args, form, use_poss)
                     continue
                 v = v[:-1] + "e"
-            elif use_poss and form in ("inf5", "inf1-long", "cmt-sg", "cmt-pl"):
+            elif use_poss and form in ("inf5", "inf1-long", "cmt",):
                 if v[-2:] in ("an", "en", "in", "on", "un", "yn", "än", "ön"):
                     v = v[:-2]
                 elif v.endswith("nsa") or v.endswith("nsä"):
@@ -558,7 +562,9 @@ def inflect_nominal(name, args, form, comp="", poss="",
     form is invalid for the word."""
 
     if name not in nounspecs.noun_decls and name not in nounspecs.decl_name_map:
-        print("inflect_nominal: unrecognized declension", name, "for", args)
+        if name not in undef_decl_warned:
+            undef_decl_warned.add(name)
+            print("inflect_nominal: unrecognized declension", name, "for", args)
         return []
     assert form in formnames.CASE_FORMS
     assert comp in formnames.COMP_FORMS
@@ -586,7 +592,7 @@ def inflect_nominal(name, args, form, comp="", poss="",
 
     # In comitative, force possessive suffix if not adj and none provided
     if args.get("pos") not in ("adj", "pron", "num"):
-        if form == "cmt-pl" and not poss:
+        if form == "cmt" and not poss:
             poss = "3x"
 
     # Only allow comparison for forms treated as adjectives.
@@ -649,8 +655,10 @@ def inflect_verbal(name, args, form, comp="", case="",
     optional possessive suffix form(s).  Returns None if the
     form is invalid for the word."""
     if name not in verbspecs.verb_conjs:
-        print("inflect_verbal: unrecognized verb conjucation", name, "for",
-              args)
+        if name not in undef_decl_warned:
+            undef_decl_warned.add(name)
+            print("inflect_verbal: unrecognized verb conjucation", name, "for",
+                  args)
         return []
     assert form in formnames.VERB_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
@@ -732,7 +740,9 @@ def inflect(name, args, form, force_n=False):
     True, generates requested number regardless of limitations specified in
     ``args``."""
     if name not in CONJ_DECL_NAMES:
-        print("UNDEFINED DECLENSION/CONJUGATION:", name)
+        if name not in undef_decl_warned:
+            undef_decl_warned.add(name)
+            print("UNDEFINED DECLENSION/CONJUGATION:", name)
         return []
     assert isinstance(args, dict)
     assert isinstance(form, (list, tuple))

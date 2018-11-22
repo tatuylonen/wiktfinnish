@@ -24,7 +24,6 @@ CASE_FORMS = (
     "tra-sg",
     "ins-sg",
     "abe-sg",
-    "cmt-sg",
     "nom-pl",
     "acc-pl",  # Used for certain pronouns only
     "gen-pl",
@@ -37,9 +36,9 @@ CASE_FORMS = (
     "all-pl",
     "ess-pl",
     "tra-pl",
-    "ins-pl",
     "abe-pl",
-    "cmt-pl")
+    "ins-pl",
+    "cmt")
 
 # Names of possessive suffixes.  The empty string means no possessive suffix.
 # 3x means either plural or singular third person (they have the same form).
@@ -200,7 +199,7 @@ def all_forms_iter(pos, transitive=True,
             for poss in poss_forms:
                 if case in ("acc-sg", "acc-pl"):
                     continue
-                if case == "cmt-pl" and not poss:
+                if case == "cmt" and not poss:
                     continue
                 for clitic in clitic_forms:
                     if clitic in ('s', 'kA'):
