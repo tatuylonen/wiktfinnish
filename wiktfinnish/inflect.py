@@ -598,7 +598,6 @@ def inflect_nominal(name, args, form, comp="", poss="",
         if form == "nom-sg" and args.get("i") == "0" and not poss:
             results2 = []
             for v in results:
-                print(comp, form, name, args, results)
                 assert v.endswith("i")
                 results2.append(v[:-1])
             results = results2
