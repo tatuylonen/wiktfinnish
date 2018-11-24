@@ -460,9 +460,6 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                                        "ins-pl", "nom-pl"):
                 if v[-1] in ("n", "t"):
                     v = v[:-1]
-            elif use_poss and form in ("inf4-nom",):
-                if v.endswith("nen"):
-                    v = v[:-3] + "se"
 
             # Add the value to the results.
             results.append(v)
@@ -533,9 +530,12 @@ def inflect_nominal(name, args, form, comp="", poss="",
             print("inflect_nominal: unrecognized declension", name, "for", args)
         return []
     assert form in formnames.CASE_FORMS
-    assert comp in formnames.COMP_FORMS
+    assert comp in formnames.COMPARATIVE_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
-    assert isinstance(clitic, str)
+    assert clitic in formnames.CLITIC_FORMS or clitic == "__dummy__"
+
+    if not form:
+        form = "nom-sg"
 
     # If the word only occurs in singular/plural, refuse to generate forms
     # that conflict with that.
@@ -567,7 +567,11 @@ def inflect_nominal(name, args, form, comp="", poss="",
         comp = ""
 
     # Inflect the word for comparison and case
-    if comp != "":
+    if comp in ("manner", "comp-manner", "sup-manner"):
+        # Inflect using comparison into manner
+        results = inflect_using(nounspecs.noun_decls, name, args, comp,
+                                False, False)
+    elif comp != "":
         # Inflect using comparison and case
         results1 = inflect_using(nounspecs.noun_decls, name, args, comp,
                                  False, False)
@@ -577,8 +581,7 @@ def inflect_nominal(name, args, form, comp="", poss="",
                 assert x.endswith("mpi")
                 x = x[:-3]
                 name = "fi-decl-vanhempi"
-            else:
-                assert comp == "sup"
+            elif comp == "sup":
                 assert x.endswith("in")
                 x = x[:-2]
                 name = "fi-decl-sisin"
@@ -591,13 +594,14 @@ def inflect_nominal(name, args, form, comp="", poss="",
         results = inflect_using(nounspecs.noun_decls, name, args, form,
                                 poss != "", clitic != "")
 
-    # Handle i=0 for nominative singular
-    if form == "nom-sg" and args.get("i") == "0" and not poss:
-        results2 = []
-        for v in results:
-            assert v.endswith("i")
-            results2.append(v[:-1])
-        results = results2
+        # Handle i=0 for nominative singular
+        if form == "nom-sg" and args.get("i") == "0" and not poss:
+            results2 = []
+            for v in results:
+                print(comp, form, name, args, results)
+                assert v.endswith("i")
+                results2.append(v[:-1])
+            results = results2
 
     # Handle e=1 for nominative singular
     if form == "nom_sg" and args.get("e", "0") == "1":
@@ -626,12 +630,13 @@ def inflect_verbal(name, args, vform, comp="", case="",
             print("inflect_verbal: unrecognized verb conjucation", name, "for",
                   args)
         return []
-    if vform not in formnames.VERB_FORMS:
-        print("INVALID VERB FORM:", vform)
     assert vform in formnames.VERB_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
-    assert comp in formnames.COMP_FORMS
-    assert isinstance(clitic, str)
+    assert comp in formnames.COMPARATIVE_FORMS
+    assert clitic in formnames.CLITIC_FORMS or clitic == "__dummy__"
+
+    if not vform:
+        vform = "inf1"
 
     if not poss and vform in ("inf1-long", "inf5"):
         poss = "3x"
@@ -650,7 +655,7 @@ def inflect_verbal(name, args, vform, comp="", case="",
         if not case:
             case = "nom-sg"
     elif case and case != "nom-sg":
-        print("Case not allowed for", vform)
+        print("Case not allowed for", vform, case)
         case = None
 
     # Default fi-conj-kumajaa to arg2 "a" (needed for "vipajaa")

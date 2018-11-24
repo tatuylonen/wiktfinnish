@@ -6,10 +6,17 @@
 
 # Names of comparative forms for adjectives (the empty string means positive,
 # or normal form).
-COMP_FORMS = ("", "comp", "sup")
+COMPARATIVE_FORMS = (
+    "",
+    "comp",
+    "sup",
+    "manner",
+    "comp-manner",
+    "sup-manner")
 
 # Names of Finnmish cases.  We combine case and number into the same name.
 CASE_FORMS = (
+    "",        # Placeholder when word/form does not inflect in case
     "nom-sg",
     "acc-sg",  # Used for certain pronouns only
     "gen-sg",
@@ -38,17 +45,26 @@ CASE_FORMS = (
     "tra-pl",
     "abe-pl",
     "ins-pl",
-    "cmt")
+    "cmt",
+)
 
 # Names of possessive suffixes.  The empty string means no possessive suffix.
 # 3x means either plural or singular third person (they have the same form).
-POSSESSIVE_FORMS = ("", "1s", "2s", "3x", "1p", "2p")
+POSSESSIVE_FORMS = (
+    "",
+    "1s",
+    "2s",
+    "3x",
+    "1p",
+    "2p",
+)
 
 # Names of verb forms.
 #
 # XXX should perhaps combine some of the negative forms as they are usually
 # (always?) identical.  Check whether they really are always.
 VERB_FORMS = (
+    "",            # Placeholder, for non-verbs only
     "pres-1sg",
     "pres-2sg",
     "pres-3sg",
@@ -93,6 +109,8 @@ VERB_FORMS = (
     "potn-pass-neg",
     "pres-part",
     "pres-pass-part",
+    "pres-part-manner",
+    "pres-pass-part-manner",
     "past-part",
     "past-pass-part",
     "agnt-part",
@@ -104,21 +122,6 @@ VERB_FORMS = (
     "inf3",
     "inf3-pass",
     "inf4",
-    # XXX remove others
-    "inf2-ine",
-    "inf2-pass-ine",
-    "inf2-ins",
-    "inf3-ine",
-    "inf3-ela",
-    "inf3-ill",
-    "inf3-ade",
-    "inf3-abe",
-    "inf3-ins",
-    "inf3-pass-ins",
-    "inf4-nom",
-    "inf4-par",
-    # XXX at least inf4+ine seems to be used, probably ela too
-    # probably tra
     "inf5",
 )
 
@@ -138,7 +141,7 @@ CLITIC_FORMS = ("",
                 "kOs",
                 "kinkO",   # Last three aren't used in Finnish treebank
                 "kAAnkO",
-                "kinkOhAn",
+                #"kinkOhAn",
 )
 
 ######################################################################
@@ -169,43 +172,49 @@ def all_forms_iter(pos, transitive=True,
     descriptors for the given part-of-speech and other parameters."""
     assert isinstance(pos, str)
 
-    comp_forms = [""] if no_comp else COMP_FORMS
-    case_forms = ["nom-sg"] if no_case else CASE_FORMS
+    comp_forms = [""] if no_comp else COMPARATIVE_FORMS
+    case_forms = ["nom-sg"] if no_case else list(x for x in CASE_FORMS if x)
     poss_forms = [""] if no_poss else POSSESSIVE_FORMS
     clitic_forms = [""] if no_clitic else CLITIC_FORMS
 
-    if pos in ("noun", "name", "num", "letter"):
+    if pos in ("noun", "name", "num", "letter", "pron-qnt", "pron-refl",
+               "pron-interr", "postp", "prep", "digit"):
         for case in case_forms:
             for poss in poss_forms:
                 if case in ("acc-sg", "acc-pl"):
                     continue
-                if case == "cmt" and not poss:
-                    continue
                 for clitic in clitic_forms:
-                    if clitic in ('s', 'kA'):
+                    if clitic == "s" and pos != "pron-interr":
+                        continue
+                    if clitic == "kA":
                         continue
                     yield ("", "", case, poss, clitic)
-    elif pos == "pron":
-        # XXX other types of pronouns?  This is for perspron.
+    elif pos in ("pron", "pron-pers"):
         for case in case_forms:
-            if case in ("ins-sg", "ins-pl", "cmt"):
-                continue
             for clitic in clitic_forms:
                 if clitic in ("s", "kA"):
                     continue
                 yield ("", "", case, '', clitic)
     elif pos == "adj":
         for comp in comp_forms:
-            for case in case_forms:
-                if case in ("acc-sg", "acc-pl"):
-                    continue
-                for poss in poss_forms:
-                    for clitic in clitic_forms:
-                        if clitic in ('s',):
-                            continue
-                        yield ("", comp, case, poss, clitic)
+            if comp in ("manner", "comp-manner", "sup-manner"):
+                for clitic in clitic_forms:
+                    if clitic == "s":
+                        continue
+                    yield ("", comp, "", "", clitic)
+            else:
+                for case in case_forms:
+                    if case in ("acc-sg", "acc-pl"):
+                        continue
+                    for poss in poss_forms:
+                        for clitic in clitic_forms:
+                            if clitic == "s":
+                                continue
+                            yield ("", comp, case, poss, clitic)
     elif pos == "verb":
         for vform in VERB_FORMS:
+            if not vform:
+                continue
             if not transitive and vform == "agnt-part":
                 continue
             comps = [""]
@@ -224,17 +233,27 @@ def all_forms_iter(pos, transitive=True,
             elif vform == "inf3-pass":
                 cases = ("ins-sg",)
             elif vform == "inf4":
-                cases = ("nom-sg", "ptv-sg")
+                cases = ("nom-sg", "ptv-sg", "tra-sg")
             if vform in ("pres-part", "past-part",
-                         "pres-pass-part", "past-pass-part"):
+                         "pres-pass-part", "past-pass-part",
+                         "nega-part"):
                 comps = comp_forms
             for comp in comps:
+                if comp in ("manner", "comp-manner", "sup-manner"):
+                    if vform not in ("pres-part", "pres-pass-part",
+                                     "past-part", "past-pass-part",
+                                     "nega-part"):
+                        continue
+                    for clitic in clitic_forms:
+                        yield (vform, comp, "", "", clitic)
+                    continue
                 for case in cases:
                     if case in ("acc-sg", "acc-pl"):
                         continue  # Accusative used only for pronouns
                     posses = [""]
                     if (vform in ("inf1-long", "inf5", "agnt-part",
                                   "pres-pass-part",
+                                  "past-part",
                                   "pres-part", "past-pass-part") or
                         (vform == "inf2" and case == "ine-sg") or
                         (vform == "inf3" and case in ("ine-sg", "ela-sg",
@@ -247,14 +266,15 @@ def all_forms_iter(pos, transitive=True,
                         if (not no_poss and not poss and
                             vform in ("inf1-long", "inf5")):
                             continue
-                        if (poss and case != "nom-sg" and
-                            vform in ("pres-part", "past-pass-part")):
-                            continue
+                        # XXX I think this is fully incorrect
+                        #if (poss and case != "nom-sg" and
+                        #    vform in ("pres-part", "past-pass-part")):
+                        #    continue
                         for clitic in clitic_forms:
                             yield (vform, comp, case, poss, clitic)
     elif pos in ("conj", "intj", "suffix", "clitic", "punct"):
         yield ("", "", "", "", "")
-    elif pos in ("postp", "prep", "adv"):
+    elif pos == "adv":
         for clitic in clitic_forms:
             yield ("", "", "", "", clitic)
             if pos == "adv":

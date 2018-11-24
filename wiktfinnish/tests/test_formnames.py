@@ -21,7 +21,7 @@ class TestForms(unittest.TestCase):
         assert isinstance(lst, (list, tuple, set))
         for x in lst:
             assert isinstance(x, str)
-        assert "" not in lst
+        assert "" in lst
         assert "nom-sg" in lst
         assert "nom-pl" in lst
         assert "ill-pl" in lst
@@ -53,6 +53,7 @@ class TestForms(unittest.TestCase):
         assert isinstance(lst, (list, tuple, set))
         for x in lst:
             assert isinstance(x, str)
+        assert "" in lst
         assert "pres-1sg" in lst
         assert "past-part" in lst
 

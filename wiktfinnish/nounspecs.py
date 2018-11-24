@@ -77,6 +77,9 @@ noun_decls = {
         "cmt": "124ine",
         "comp": "134mpi",
         "sup": "134in",
+	"manner": "134sti",
+        "comp-manner": "134mmin",
+        "sup-manner": "134immin",
     },
     "fi-decl-palvelu": {
     	"nargs": 2,
@@ -117,6 +120,9 @@ noun_decls = {
         "cmt": "1ine",
         "comp": "1mpi",
         "sup": "1in",
+	"manner": "1sti",
+        "comp-manner": "1mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-valtio": {
     	"nargs": 2,
@@ -157,6 +163,9 @@ noun_decls = {
         "cmt": "1ine",
         "comp": "1mpi",
         "sup": "1in",
+	"manner": "1sti",
+        "comp-manner": "1mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-laatikko": {
     	"nargs": 5,
@@ -198,6 +207,9 @@ noun_decls = {
         "cmt": "124ine",
         "comp": "134mpi",
         "sup": "124in",
+	"manner": "134sti",
+        "comp-manner": "134mmin",
+        "sup-manner": "134immin",
     },
     "fi-decl-risti": {
     	"nargs": 4,
@@ -238,6 +250,9 @@ noun_decls = {
         "cmt": "12eine",
         "comp": "13impi",
         "sup": "13ein",
+	"manner": "134isti",
+        "comp-manner": "134immin",
+        "sup-manner": "134eimmin",
     },
     "fi-decl-paperi": {
     	"nargs": 2,
@@ -278,6 +293,9 @@ noun_decls = {
         "cmt": "1eine",
         "comp": "1impi",
         "sup": "1ein",
+	"manner": "1isti",
+        "comp-manner": "1immin",
+        "sup-manner": "1eimmin",
     },
     "fi-decl-ovi": {
     	"nargs": 4,
@@ -318,7 +336,10 @@ noun_decls = {
         "abe-pl": "13itt4",
         "cmt": "12ine",
         "comp": "13empi",
-        "sup": "13ein",
+        "sup": "13in",
+	"manner": "13esti",
+        "comp-manner": "13emmin",
+        "sup-manner": "13immin",
     },
     "fi-decl-nalle": {
     	"nargs": 4,
@@ -359,6 +380,9 @@ noun_decls = {
         "cmt": "12eine",
         "comp": "13empi",
         "sup": "13ein",
+	"manner": "13esti",
+        "comp-manner": "13emmin",
+        "sup-manner": "13eimmin",
     },
     "fi-decl-kala": {
     	"nargs": 4,
@@ -400,6 +424,9 @@ noun_decls = {
         "cmt": "124-Oine",
         "comp": "134mpi",
         "sup": "134-Oin",
+	"manner": "134sti",
+        "comp-manner": "134mmin",
+        "sup-manner": "134-Oimmin",
     },
     "fi-decl-koira": {
     	"nargs": 4,
@@ -441,6 +468,9 @@ noun_decls = {
         "cmt": "12ine",
         "comp": "134mpi",
         "sup": "13in",
+	"manner": "134sti",
+        "comp-manner": "134mmin",
+        "sup-manner": "13immin",
     },
     "fi-decl-omena": {
     	"nargs": 2,
@@ -482,7 +512,10 @@ noun_decls = {
         "abe-pl": ["12-Oitt2", "1itt2"],
         "cmt": ["12-Oine", "1ine"],
         "comp": "12mpi",
-        "sup": "12-Oin",
+        "sup": ["12-Oin", "12in"],
+	"manner": "12sti",
+        "comp-manner": "12mmin",
+        "sup-manner": ["12-Oimmin", "1immin"],
     },
     "fi-decl-kulkija": {
     	"nargs": 2,
@@ -524,6 +557,9 @@ noun_decls = {
         "cmt": ["12-Oine"],
         "comp": "12mpi",
         "sup": "12-Oin",
+	"manner": "12sti",
+        "comp-manner": "12mmin",
+        "sup-manner": "12-Oimmin",
     },
     "fi-decl-katiska": {
     	"nargs": 2,
@@ -567,6 +603,9 @@ noun_decls = {
         "cmt": ["12-Oine"],
         "comp": "12mpi",
         "sup": "12-Oin",
+	"manner": "12sti",
+        "comp-manner": "12mmin",
+        "sup-manner": "12-Oimmin",
     },
     "fi-decl-solakka": {
     	"nargs": 4,
@@ -608,8 +647,11 @@ noun_decls = {
         "ins-pl-poss": None,
         "abe-pl": "134-Oitt4",
         "cmt": "124-Oine",
-        "comp": "124mpi",
-        "sup": "124-Oin",
+        "comp": "134mpi",
+        "sup": "134-Oin",
+	"manner": "134sti",
+        "comp-manner": "134mmin",
+        "sup-manner": "134-Oimmin",
     },
     "fi-decl-korkea": {
     	"nargs": 2,
@@ -651,6 +693,9 @@ noun_decls = {
         "cmt": ["1ine"],
         "comp": "12mpi",
         "sup": "1in",
+	"manner": "12sti",
+        "comp-manner": "12mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-vanhempi": {
     	"nargs": 2,
@@ -731,6 +776,9 @@ noun_decls = {
         "cmt": ["1ine"],
         "comp": "1@mpi",
         "sup": "1in",
+	"manner": "1@sti",
+        "comp-manner": "1@mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-maa": {
     	"nargs": 2,
@@ -771,6 +819,9 @@ noun_decls = {
         "cmt": ["1-ine"],
         "comp": "1mpi",
         "sup": "1-in",
+	"manner": "1sti",
+        "comp-manner": "1mmin",
+        "sup-manner": "1-immin",
     },
     "fi-decl-suo": {
     	"nargs": 2,
@@ -811,6 +862,9 @@ noun_decls = {
         "cmt": ["1/ine"],
         "comp": "1mpi",
         "sup": "1/in",
+	"manner": "1sti",
+        "comp-manner": "1mmin",
+        "sup-manner": "1/immin",
     },
     "fi-decl-rosé": {
     	"nargs": 2,
@@ -851,6 +905,9 @@ noun_decls = {
         "cmt": ["1ine"],
         "comp": "1mpi",
         "sup": "1in",
+	"manner": "1sti",
+        "comp-manner": "1mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-parfait": {
     	"nargs": 2,
@@ -893,6 +950,9 @@ noun_decls = {
         "cmt": ["1'ine"],
         "comp": "1'mpi",
         "sup": "1'in",
+	"manner": "1'sti",
+        "comp-manner": "1'mmin",
+        "sup-manner": "1'immin",
     },
     "fi-decl-tiili": {
     	"nargs": 2,
@@ -934,6 +994,9 @@ noun_decls = {
         "cmt": "1ine",
         "comp": "1empi",
         "sup": "1ein",
+	"manner": "1esti",
+        "comp-manner": "1emmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-uni": {
     	"nargs": 2,
@@ -973,8 +1036,11 @@ noun_decls = {
         "ins-pl-poss": None,
         "abe-pl": "1itt2",
         "cmt": "1ine",
-        "comp": "1impi",
+        "comp": "1empi",
         "sup": "1in",
+	"manner": "1esti",
+        "comp-manner": "1emmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-toimi": {
     	"nargs": 2,
@@ -1015,7 +1081,10 @@ noun_decls = {
         "abe-pl": "1mitt2",
         "cmt": "1mine",
         "comp": "1mempi",
-        "sup": "1mein",
+        "sup": "1min",
+	"manner": "1mesti",
+        "comp-manner": "1memmin",
+        "sup-manner": "1mimmin",
     },
     "fi-decl-pieni": {
     	"nargs": 2,
@@ -1057,6 +1126,9 @@ noun_decls = {
         "cmt": "1ine",
         "comp": "1empi",
         "sup": "1in",
+	"manner": "1esti",
+        "comp-manner": "1emmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-käsi": {
     	"nargs": 2,
@@ -1096,8 +1168,11 @@ noun_decls = {
         "ins-pl-poss": None,
         "abe-pl": "1sitt2",
         "cmt": "1sine",
-        "comp": "1sempi",
+        "comp": "1dempi",
         "sup": "1sin",
+	"manner": "1desti",
+        "comp-manner": "1demmin",
+        "sup-manner": "1simmin",
     },
     "fi-decl-kynsi": {
     	"nargs": 2,
@@ -1139,6 +1214,9 @@ noun_decls = {
         "cmt": "1sine",
         "comp": "1nempi",
         "sup": "1sin",
+	"manner": "1nesti",
+        "comp-manner": "1nemmin",
+        "sup-manner": "1simmin",
     },
     "fi-decl-lapsi": {
     	"nargs": 2,
@@ -1180,6 +1258,9 @@ noun_decls = {
         "cmt": "1sine",
         "comp": "1sempi",
         "sup": "1sin",
+	"manner": "1sesti",
+        "comp-manner": "1semmin",
+        "sup-manner": "1simmin",
     },
     "fi-decl-veitsi": {
     	"nargs": 2,
@@ -1221,6 +1302,9 @@ noun_decls = {
         "cmt": "1tsine",
         "comp": "1tsempi",
         "sup": "1tsin",
+	"manner": "1tsesti",
+        "comp-manner": "1tsemmin",
+        "sup-manner": "1tsimmin",
     },
     "fi-decl-kaksi": {
     	"nargs": 2,
@@ -1260,8 +1344,11 @@ noun_decls = {
         "ins-pl-poss": None,
         "abe-pl": "1ksitt2",
         "cmt": "1ksine",
-        "comp": "1ksimpi",
+        "comp": "1hdempi",
         "sup": "1ksin",
+	"manner": "1hdesti",
+        "comp-manner": "1hdemmin",
+        "sup-manner": "1ksimmin",
     },
     "fi-decl-sisar": {
     	"nargs": 5,
@@ -1303,6 +1390,9 @@ noun_decls = {
         "cmt": "134ine",
         "comp": "134empi",
         "sup": "134in",
+	"manner": "134esti",
+        "comp-manner": "134emmin",
+        "sup-manner": "134immin",
     },
     "fi-decl-kytkin": {
     	"nargs": 5,
@@ -1345,6 +1435,9 @@ noun_decls = {
         "cmt": "134mine",
         "comp": "134mempi",
         "sup": "134min",
+	"manner": "134mesti",
+        "comp-manner": "134memmin",
+        "sup-manner": "134mimmin",
     },
     "fi-decl-onneton": {
     	"nargs": 2,
@@ -1386,6 +1479,9 @@ noun_decls = {
         "cmt": "12-ttOmine",
         "comp": "12-ttOm2mpi",
         "sup": "12-ttOmin",
+	"manner": "12-ttOm2sti",
+        "comp-manner": "12-ttOm2mmin",
+        "sup-manner": "12-ttOmimmin",
     },
     "fi-decl-lämmin": {
     	"nargs": 0,
@@ -1427,6 +1523,9 @@ noun_decls = {
         "cmt": "1lämpimine",
         "comp": "1lämpimämpi",
         "sup": "1lämpimin",
+	"manner": "1lämpimästi",
+        "comp-manner": "1lämpimämmin",
+        "sup-manner": "1lämpimimmin",
     },
     "fi-decl-sisin": {
     	"nargs": 2,
@@ -1507,6 +1606,9 @@ noun_decls = {
         "cmt": "1vasempine",
         "comp": ["1vasempi", "1vasemmanpuoleisempi"],
         "sup": "1vasemmanpuoleisin",
+	"manner": "1vasemmanpuoleisesti",
+        "comp-manner": "1vasemmanpuoleisemmin",
+        "sup-manner": "1vasemmanpuoleisimmin",
     },
     "fi-decl-nainen": {
     	"nargs": 2,
@@ -1548,6 +1650,9 @@ noun_decls = {
         "cmt": "1sine",
         "comp": "1sempi",
         "sup": "1sin",
+	"manner": "1sesti",
+        "comp-manner": "1semmin",
+        "sup-manner": "1simmin",
     },
     "fi-decl-vastaus": {
     	"nargs": 2,
@@ -1589,6 +1694,9 @@ noun_decls = {
         "cmt": "1ksine",
         "comp": "1ksempi",
         "sup": "1ksin",
+	"manner": "1ksesti",
+        "comp-manner": "1ksemmin",
+        "sup-manner": "1ksimmin",
     },
     "fi-decl-kalleus": {
     	"nargs": 2,
@@ -1628,8 +1736,11 @@ noun_decls = {
         "ins-pl-poss": None,
         "abe-pl": "1ksitt2",
         "cmt": "1ksine",
-        "comp": "1ksempi",
+        "comp": "1dempi",
         "sup": "1ksin",
+	"manner": "1desti",
+        "comp-manner": "1demmin",
+        "sup-manner": "1ksimmin",
     },
     "fi-decl-vieras": {
     	"nargs": 5,
@@ -1672,6 +1783,9 @@ noun_decls = {
         "cmt": "134ine",
         "comp": "1344mpi",
         "sup": "134in",
+	"manner": "1344sti",
+        "comp-manner": "1344mmin",
+        "sup-manner": "134immin",
     },
     "fi-decl-mies": {
     	"nargs": 0,
@@ -1713,6 +1827,9 @@ noun_decls = {
         "cmt": "1miehine",
         "comp": "1miehempi",
         "sup": "1miehin",
+	"manner": "1miehesti",
+        "comp-manner": "1miehemmin",
+        "sup-manner": "1miehimmin",
     },
     "fi-decl-ohut": {
     	"nargs": 5,
@@ -1755,6 +1872,9 @@ noun_decls = {
         "cmt": "134ine",
         "comp": "134empi",
         "sup": "134in",
+	"manner": "134esti",
+        "comp-manner": "134emmin",
+        "sup-manner": "134immin",
     },
     "fi-decl-kevät": {
     	"nargs": 2,
@@ -1796,6 +1916,9 @@ noun_decls = {
         "cmt": ["1ine"],
         "comp": "12mpi",
         "sup": "1in",
+	"manner": "12sti",
+        "comp-manner": "12mmin",
+        "sup-manner": "1immin",
     },
     "fi-decl-kahdeksas": {
     	"nargs": 2,
@@ -1837,6 +1960,9 @@ noun_decls = {
         "cmt": "1nsine",
         "comp": "1mpi",
         "sup": "1-in",
+	"manner": "1nnesti",
+        "comp-manner": "1nnemmin",
+        "sup-manner": "1nsimmin",
     },
     "fi-decl-tuhat": {
     	"nargs": 2,
@@ -1878,6 +2004,9 @@ noun_decls = {
         "cmt": "1nsine",
         "comp": "1nnempi",
         "sup": "1nsin",
+	"manner": "1nnesti",
+        "comp-manner": "1nnemmin",
+        "sup-manner": "1nsimmin",
     },
     "fi-decl-kuollut": {
     	"nargs": 2,
@@ -1919,6 +2048,9 @@ noun_decls = {
         "cmt": "1eine",
         "comp": "1eempi",
         "sup": "1ein",
+	"manner": "1eesti",
+        "comp-manner": "1eemmin",
+        "sup-manner": "1eimmin",
     },
     "fi-decl-hame": {
     	"nargs": 4,
@@ -1960,6 +2092,9 @@ noun_decls = {
         "cmt": "13eine",
         "comp": "13eempi",
         "sup": "13ein",
+	"manner": "13eesti",
+        "comp-manner": "13eemmin",
+        "sup-manner": "13eimmin",
     },
 
     "fi-decl-askel": {
@@ -2002,6 +2137,9 @@ noun_decls = {
         "cmt": ["134ine", "134eine"],
         "comp": ["134empi", "134eempi"],  # Not used?
         "sup": ["134in", "134ein"],  # Not used?
+	"manner": ["134esti", "134eesti"],
+        "comp-manner": ["134emmin", "134eemmin"],
+        "sup-manner": ["134immin", "134eimmin"],
     },
 
     "fi-decl-filee": {
@@ -2043,6 +2181,9 @@ noun_decls = {
         "cmt": ["1-ine"],
         "comp": "1mpi",  # Not used?
         "sup": "1-in",  # Not used?
+	"manner": "1sti",   # Not used?
+        "comp-manner": "1mmin",  # Not used?
+        "sup-manner": "1-immin",  # Not used?
     },
 
     "fi-decl-maa-dot": {
@@ -2086,6 +2227,9 @@ noun_decls = {
         "cmt": ["1:ine"],
         "comp": "1:mpi",  # Not used?
         "sup": "1:in",  # Not used?
+	"manner": "1:sti",  # Not used?
+        "comp-manner": "1:mmin",  # Not used?
+        "sup-manner": "1:immin",  # Not used?
     },
 
     "fi-decl-filee-dot": {
@@ -2129,6 +2273,9 @@ noun_decls = {
         "cmt": ["1:ine"],
         "comp": "1:mpi",  # Not used?
         "sup": "1:in",  # Not used?
+	"manner": "1:sti",
+        "comp-manner": "1:mmin",
+        "sup-manner": "1:immin",
     },
     "fi-decl-inf2": {
         "internal": True,
