@@ -9,6 +9,7 @@ from wiktfinnish.inflect import inflect
 from wiktfinnish.inflect import add_clitic
 from wiktfinnish.inflect import last_char_to_vowel, last_char_to_aou
 from wiktfinnish.inflect import word_to_aae
+from wiktfinnish.stem import encode_paradigm, decode_paradigm
 
 
 __all__ = (
@@ -24,4 +25,6 @@ __all__ = (
     "last_char_to_vowel",
     "last_char_to_aou",
     "word_to_aae",
+    "endode_paradigm",
+    "decode_paradigm",
 )

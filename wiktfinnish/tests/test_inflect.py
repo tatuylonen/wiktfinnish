@@ -544,11 +544,46 @@ class InflectTests(unittest.TestCase):
         for lst in testcases:
             name = lst[0]
             args = lst[1]
+            args = args.copy()
+            args["template_name"] = name
             for form, result in lst[2:]:
                 if isinstance(form, str):
                     form = ("", "", form, "", "")
-                ret = wiktfinnish.inflect(name, args, form)
+                ret = wiktfinnish.inflect(args, form)
                 if result not in ret:
                     print(name, args, form)
                     print(form, result, "GOT UNEXPECTED RESULT:", ret)
                     assert result in ret
+
+# XXX test comparatives / superlatives:
+# hienoin, hauskin
+# suurin, kiltein, kaunein
+# parempi, lyhyempi, pisin
+
+# http://www.kielitoimistonohjepankki.fi/haku/adjektiivit/ohje/526
+# kiva - kivempi / kivampi - kivin
+# saita - saidempi / saidampi - sadin / saidoin
+
+# suuri, suurempi, suurin
+# kiltti, kiltimpi, kiltein
+
+# kallis, kalliimpi, kallein
+
+# hyvä - parempi - paras /parhain
+# lyhyt - lyhyempi / lyhempi - lyhyin / lyhin
+# pitkä - pidempi / pitempi - pisin
+# paljo - enempi - enin
+# paljon - enemmän - eniten
+# luova - luovempi - luovin
+
+# https://www.kielikello.fi/-/komparaation-keinot-voiko-ruusukin-olla-ruusumpi-
+# hyvin - paremmin - parhaimmin / parhaiten
+# paha - pahemmin - phimmin / pahiten
+
+# länsi - lännempi
+# ranta - rannempi - rannimpana
+# timantimpi
+
+# tanakka - tanakampi - tanakin / tanakoin
+
+# kirkasvetinen - kirkasvetisempi / kirkkaampivetinen - kirkasvetisempi / kirkkainvetinen
