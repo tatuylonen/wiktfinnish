@@ -755,14 +755,15 @@ def inflect_verbal(name, args, vform, comp="", case="",
         return results
 
 
-def inflect(name, args, form, force_n=False):
+def inflect(args, form, force_n=False):
     """This is a generic Finnish word inflection function.  This inflects
-    a word of class ``name``, having conjugation/declension arguments ``args``
-    into the form indicated by ``form``.  The form is indicated by
-    (vform, comp, case, poss, clitic).  This returns a list of
-    inflected forms, the most preferred one first.  If ``force_n`` is
-    True, generates requested number regardless of limitations specified in
-    ``args``."""
+    a word of class args["template_name"], having
+    conjugation/declension arguments ``args`` into the form indicated
+    by ``form``.  The form is indicated by (vform, comp, case, poss,
+    clitic).  This returns a list of inflected forms, the most
+    preferred one first.  If ``force_n`` is True, generates requested
+    number regardless of limitations specified in ``args``."""
+    name = args["template_name"]
     if name not in CONJ_DECL_NAMES:
         if name not in undef_decl_warned:
             undef_decl_warned.add(name)
