@@ -169,8 +169,8 @@ def decode_paradigm(stem, coding, pos=None):
         elif mode is None:
             pass
         else:
-            print("Unhandled mode in decode:", s, mode)
-            assert False
+            print("Unhandled mode in decode:", coding, mode)
+            return None
         mode = ch
 
     # Save template name in args.
