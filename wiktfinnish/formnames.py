@@ -109,8 +109,6 @@ VERB_FORMS = (
     "potn-pass-neg",
     "pres-part",
     "pres-pass-part",
-    "pres-part-manner",
-    "pres-pass-part-manner",
     "past-part",
     "past-pass-part",
     "agnt-part",
@@ -233,7 +231,9 @@ def all_forms_iter(pos, transitive=True,
             elif vform == "inf3-pass":
                 cases = ("ins-sg",)
             elif vform == "inf4":
-                cases = ("nom-sg", "ptv-sg", "tra-sg")
+                # We treat the -minen noun derivative as inf4 and thus allow
+                # full nominal inflection on inf4.
+                cases = case_forms
             if vform in ("pres-part", "past-part",
                          "pres-pass-part", "past-pass-part",
                          "nega-part"):
@@ -260,7 +260,7 @@ def all_forms_iter(pos, transitive=True,
                                                       "ill-sg", "ade-sg",
                                                       "abe-sg",
                                                       "ins-sg")) or
-                        (vform == "inf4" and case in ("nom-sg", "ptv-sg"))):
+                        vform == "inf4"):
                         posses = poss_forms
                     for poss in posses:
                         if (not no_poss and not poss and

@@ -10,23 +10,23 @@ class TestStem(unittest.TestCase):
     def test_enc1(self):
         args = {"template_name": "fi-decl-valo", "1": "val", "2": "", "3": "", "4": "o", "5": "a"}
         stem, e = encode_paradigm(args)
-        assert e == "NvaloG-Ho"
-        assert stem == "val"
+        assert e == "Nvalo"
+        self.assertEqual(stem, "valo||a")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-valo"
-        assert d["1"] == "val"
+        assert d["1"] == "valo"
         assert d.get("2", "") == ""
         assert d.get("3", "") == ""
-        assert d.get("4", "") == "o"
+        assert d.get("4", "") == ""
         assert d.get("5", "") == "a"
 
     def test_enc2(self):
         args = {"template_name": "fi-decl-valo",
                 "1": "lä", "2": "mp", "3": "mm", "4": "ö", "5": "ä"}
         stem, e = encode_paradigm(args)
-        self.assertEqual(e, "NvaloGp-mHö")
-        assert stem == "läm"
+        self.assertEqual(e, "NvaloGp-m")
+        self.assertEqual(stem, "läm|ö|ä")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-valo"
@@ -40,7 +40,7 @@ class TestStem(unittest.TestCase):
         args = {"template_name": "fi-decl-palvelu", "1": "palvelu", "2": "a"}
         stem, e = encode_paradigm(args)
         self.assertEqual(e, "Npalvelu")
-        assert stem == "palvelu"
+        self.assertEqual(stem, "palvelu|a")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-palvelu"
@@ -51,8 +51,8 @@ class TestStem(unittest.TestCase):
         args = {"template_name": "fi-decl-parfait",
                 "1": "parfait", "2": "a", "ill_sg_vowel": "e"}
         stem, e = encode_paradigm(args)
-        self.assertEqual(e, "NparfaitJe")
-        assert stem == "parfait"
+        self.assertEqual(e, "Nparfait")
+        self.assertEqual(stem, "parfait|e|a")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-parfait"
@@ -74,8 +74,8 @@ class TestStem(unittest.TestCase):
         args = {"template_name": "fi-decl-maa-dot",
                 "1": "DNA", "2": "a", "3": "a"}
         stem, e = encode_paradigm(args)
-        self.assertEqual(e, "Nmaa-dotFa")
-        assert stem == "DNA"
+        self.assertEqual(e, "Nmaa-dot")
+        self.assertEqual(stem, "DNA|a|a")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-maa-dot"
@@ -87,7 +87,7 @@ class TestStem(unittest.TestCase):
         args = {"template_name": "fi-conj-saada", "1": "my", "2": "ä"}
         stem, e = encode_paradigm(args)
         self.assertEqual(e, "Vsaada")
-        assert stem == "my"
+        self.assertEqual(stem, "my|ä")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-conj-saada"

@@ -16,7 +16,7 @@ verb_conjs = {
     	"nargs": 5,
         "pres-1sg": "134n",
         "pres-2sg": "134t",
-        "pres-3sg": "1244",
+        "pres-3sg": "124@",
         "pres-1pl": "134mme",
         "pres-2pl": "134tte",
         "pres-3pl": "124v5t",
