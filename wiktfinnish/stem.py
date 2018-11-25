@@ -124,9 +124,6 @@ def encode_paradigm(args):
 
     paradigm = "".join(parts)
 
-    if paradigm in ("NuniPa", "NpieniPa"):
-        print("XXXXX", stem, paradigm, args)
-
     return stem, paradigm
 
 
