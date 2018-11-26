@@ -198,7 +198,8 @@ def decode_paradigm(stem, coding, pos=None):
         if len(parts) != 3:
             return None
         stem, vowels, ae = parts  # end_part
-        args["ill_sg_vowel"] = vowels[0]
+        if vowels:
+            args["ill_sg_vowel"] = vowels[0]
         if len(vowels) > 1:
             args["ill_sg_vowel2"] = vowels[1]
     elif nargs == 0:
