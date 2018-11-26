@@ -379,7 +379,7 @@ testcases = [
      [("impr-pass-neg", "", "", "", ""), "saatako"]],
     ["fi-conj-juoda", {"1": "juo", "2": "a"},
      [("past-1sg", "", "", "", ""), "join"]],
-    ["fi-conj-käydä", {"1": "käy", "2": "ä"},
+    ["fi-conj-käydä", {"1": "kä", "2": "ä"},
      [("past-1sg", "", "", "", ""), "kävin"]],
     ["fi-conj-rohkaista", {"1": "va", "2": "v", "3": "p", "4": "i", "5": "a"},
      [("pres-1sg", "", "", "", ""), "vapisen"],
