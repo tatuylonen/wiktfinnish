@@ -67,10 +67,11 @@ def encode_paradigm(args):
             arg3 = ""
         if arg2 == "’":
             arg2 = "'"
-        while arg2 and arg3 and arg2[0] == arg3[0]:
-            stem += arg2[0]
-            arg2 = arg2[1:]
-            arg3 = arg3[1:]
+        # while (arg2 and arg3 and arg2[0] == arg3[0] and
+        #        arg2[0] not in "kpt"):
+        #     stem += arg2[0]
+        #     arg2 = arg2[1:]
+        #     arg3 = arg3[1:]
         if arg2 or arg3:
             gradation = "{}-{}".format(arg2, arg3)
 
@@ -102,7 +103,7 @@ def encode_paradigm(args):
     if nargs in (3, 5) or name in ILL_SG_DECLS:
         stem += SEPARATOR + (end_part or end_vowel or
                              ill_sg_vowel + ill_sg_vowel2)
-    if nargs != 0:
+    if nargs > 1:
         stem += SEPARATOR + ae
 
     # Now encode it into a string.  Verbal encodings begin with a V
@@ -202,7 +203,7 @@ def decode_paradigm(stem, coding, pos=None):
             args["ill_sg_vowel"] = vowels[0]
         if len(vowels) > 1:
             args["ill_sg_vowel2"] = vowels[1]
-    elif nargs == 0:
+    elif nargs > 1:
         if len(parts) != 1:
             return None
         stem = parts[0]
@@ -217,7 +218,7 @@ def decode_paradigm(stem, coding, pos=None):
         return None
 
     # Save stem and final a/ä if the declension/conjugation has args.
-    if nargs > 0:
+    if nargs > 1:
         args["1"] = stem
         args[str(nargs)] = ae
 

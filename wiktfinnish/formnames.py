@@ -16,8 +16,7 @@ COMPARATIVE_FORMS = (
 
 # Names of Finnmish cases.  We combine case and number into the same name.
 CASE_FORMS = (
-    "",        # Placeholder when word/form does not inflect in case
-    "nom-sg",
+    "",        # Means nominative singular
     "acc-sg",  # Used for certain pronouns only
     "gen-sg",
     "ptv-sg",
@@ -171,7 +170,7 @@ def all_forms_iter(pos, transitive=True,
     assert isinstance(pos, str)
 
     comp_forms = [""] if no_comp else COMPARATIVE_FORMS
-    case_forms = ["nom-sg"] if no_case else list(x for x in CASE_FORMS if x)
+    case_forms = [""] if no_case else list(x for x in CASE_FORMS if x)
     poss_forms = [""] if no_poss else POSSESSIVE_FORMS
     clitic_forms = [""] if no_clitic else CLITIC_FORMS
 
@@ -267,7 +266,7 @@ def all_forms_iter(pos, transitive=True,
                             vform in ("inf1-long", "inf5")):
                             continue
                         # XXX I think this is fully incorrect
-                        #if (poss and case != "nom-sg" and
+                        #if (poss and case != "" and
                         #    vform in ("pres-part", "past-pass-part")):
                         #    continue
                         for clitic in clitic_forms:

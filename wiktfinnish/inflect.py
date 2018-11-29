@@ -42,7 +42,7 @@ argument_name_map = {
     "inf4": ["inf4_nomi"],
 
     # For fi-decl-pron and fi-decl
-    "nom-sg": ["1s", "word"],
+    "": ["1s", "word"],
     "gen-sg": ["2s"],
     "ptv-sg": ["3s", "par_sg"],
     "acc-sg": ["4s"],
@@ -152,7 +152,8 @@ def process_template(template, args, ill_sg_vowel=None):
                 if "par_sg_a" in args:
                     parts.append(args["par_sg_a"])
                 else:
-                    assert delparts
+                    if not delparts:
+                        return None
                     parts.append(delparts[-1])
             if x == "3" and not v:
                 # XXX what exactly was this kludge for...?  I'm not sure if
@@ -181,7 +182,7 @@ def process_template(template, args, ill_sg_vowel=None):
                         ch = last_char_to_vowel(p[-1])
                         parts.append(ch)
                     else:
-                        parts.append("a")
+                        return None
         elif x == "A":
             a = args.get("par_sg_a", None)
             if a:
@@ -203,18 +204,30 @@ def process_template(template, args, ill_sg_vowel=None):
                 parts.append("y")
         elif x == "D":
             p = "".join(parts)
-            if p and p[-1] in "rnml":
+            if not p:
+                return None
+            if p[-1] in "rnml":
                 parts.append(p[-1])
             else:
                 parts.append("d")
         elif x == "-":
             # Drop last, move to delparts so it counts for gradation
+            if not parts:
+                return None
             p = parts.pop()
+            if p not in "aeiouyäö":  # Must be vowel
+                return None
             delparts.append(p)
         elif x == "/":
             # Drop second to last
+            if len(parts) < 2:
+                return None
             p = parts.pop()
-            parts.pop()
+            if p not in "aeiouyäö":  # Must be vowel
+                return None
+            p2 = parts.pop()
+            if p2 not in "aeiouyäö":  # Must be vowel
+                return None
             parts.append(p)
         else:
             parts.append(x)
@@ -281,14 +294,17 @@ def add_clitic(results, clitic):
     for v in results:
         args = {"1": v}
         ret = process_template("1" + clitic, args)
-        results2.append(ret)
+        if v:
+            results2.append(ret)
         if clitic == "kOs" and v[-1] not in "bcdfghjklmpqrstvwxz":
             ret = process_template("1" + "ks", args)
-            results2.append(ret)
+            if ret:
+                results2.append(ret)
         if clitic == "kOs" and v[-1] == "t":
             args = {"1": v[:-1]}
             ret = process_template("1" + "ks", args)
-            results2.append(ret)
+            if ret:
+                results2.append(ret)
     return results2
 
 
@@ -371,7 +387,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
 
     # Check if it is a declension for compound words that inflect from multiple
     # locations.
-    if "split" in decl and (form != "nom-sg" or "word" not in args):
+    if "split" in decl and (form != "" or "word" not in args):
         split = decl["split"]
         assert isinstance(split, (list, tuple))
         assert len(split) % 2 == 0
@@ -534,9 +550,6 @@ def inflect_nominal(name, args, form, comp="", poss="",
     assert poss in formnames.POSSESSIVE_FORMS
     assert clitic in formnames.CLITIC_FORMS or clitic == "__dummy__"
 
-    if not form:
-        form = "nom-sg"
-
     # If the word only occurs in singular/plural, refuse to generate forms
     # that conflict with that.
     if not force_n and "n" in args:
@@ -595,7 +608,7 @@ def inflect_nominal(name, args, form, comp="", poss="",
                                 poss != "", clitic != "")
 
         # Handle i=0 for nominative singular
-        if form == "nom-sg" and args.get("i") == "0" and not poss:
+        if form == "" and args.get("i") == "0" and not poss:
             results2 = []
             for v in results:
                 assert v.endswith("i")
@@ -647,15 +660,6 @@ def inflect_verbal(name, args, vform, comp="", case="",
         case = "ins-sg"
     elif vform == "inf3-pass" and not case:
         case = "ins-sg"
-    elif vform in ("pres-part", "pres-pass-part",
-                   "past-part", "past-pass-part", "agnt-part",
-                   "nega-part", "inf2", "inf2-pass", "inf3", "inf3-pass",
-                   "inf4"):
-        if not case:
-            case = "nom-sg"
-    elif case and case != "nom-sg":
-        print("Case not allowed for", vform, case)
-        case = None
 
     # Default fi-conj-kumajaa to arg2 "a" (needed for "vipajaa")
     # XXX is this still needed?  I think a more generic default has been
@@ -773,10 +777,13 @@ def inflect(args, form, force_n=False):
     assert isinstance(form, (list, tuple))
     assert len(form) == 5
     vform, comp, case, poss, clitic = form
+    assert vform in formnames.VERB_FORMS
+    assert comp in formnames.COMPARATIVE_FORMS
+    assert case in formnames.CASE_FORMS
+    assert poss in formnames.POSSESSIVE_FORMS
+    assert clitic in formnames.CLITIC_FORMS or clitic == "__dummy__"
     if vform:
         return inflect_verbal(name, args, vform, comp=comp, case=case,
                               poss=poss, clitic=clitic)
-    if not case:
-        case = "nom-sg"
     return inflect_nominal(name, args, case, comp=comp, poss=poss,
                            clitic=clitic, force_n=force_n)
