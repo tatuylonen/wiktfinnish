@@ -203,12 +203,13 @@ def decode_paradigm(stem, coding, pos=None):
             args["ill_sg_vowel"] = vowels[0]
         if len(vowels) > 1:
             args["ill_sg_vowel2"] = vowels[1]
-    elif nargs > 1:
+    elif nargs <= 1:
         if len(parts) != 1:
             return None
         stem = parts[0]
         ae = "a"
     else:
+        print("nargs", nargs, "parts", parts, "stem", stem)
         if len(parts) != 2:
             return None
         stem, ae = parts

@@ -25,14 +25,14 @@ class TestStem(unittest.TestCase):
         args = {"template_name": "fi-decl-valo",
                 "1": "lä", "2": "mp", "3": "mm", "4": "ö", "5": "ä"}
         stem, e = encode_paradigm(args)
-        self.assertEqual(e, "NvaloGp-m")
-        self.assertEqual(stem, "läm|ö|ä")
+        self.assertEqual(e, "NvaloGmp-mm")
+        self.assertEqual(stem, "lä|ö|ä")
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-valo"
-        assert d["1"] == "läm"
-        assert d.get("2", "") == "p"
-        assert d.get("3", "") == "m"
+        assert d["1"] == "lä"
+        assert d.get("2", "") == "mp"
+        assert d.get("3", "") == "mm"
         assert d.get("4", "") == "ö"
         assert d.get("5", "") == "ä"
 
@@ -41,6 +41,7 @@ class TestStem(unittest.TestCase):
         stem, e = encode_paradigm(args)
         self.assertEqual(e, "Npalvelu")
         self.assertEqual(stem, "palvelu|a")
+        print("stem", stem, "paradigm", e)
         d = decode_paradigm(stem, e)
         print("decoded", d)
         assert d["template_name"] == "fi-decl-palvelu"

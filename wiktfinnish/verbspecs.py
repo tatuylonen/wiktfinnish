@@ -70,6 +70,7 @@ verb_conjs = {
         "inf3-pass": "134tt5m5n",
         "inf4": "124minen",
         "inf5": "124m5isill5",  # +poss_suff
+	"jA": "124j5",
     },
     "fi-conj-muistaa": {
     	"nargs": 4,
@@ -129,6 +130,7 @@ verb_conjs = {
         "inf3-pass": "13ett4m4n",
         "inf4": "124minen",
         "inf5": "124m4isill4",  # +poss_suff
+	"jA": "124j4",
     },
     "fi-conj-huutaa": {
     	"nargs": 2,
@@ -188,6 +190,7 @@ verb_conjs = {
         "inf3-pass": "1Dett2m2n",
         "inf4": "1t2minen",
         "inf5": "1t2m2isill2",  # +poss_suff
+	"jA": "1t2j2",
     },
     "fi-conj-soutaa": {
     	"nargs": 2,
@@ -247,6 +250,7 @@ verb_conjs = {
         "inf3-pass": "1Dett2m2n",
         "inf4": "1t2minen",
         "inf5": "1t2m2isill2",  # +poss_suff
+	"jA": "1t2j2",
     },
     "fi-conj-kaivaa": {
     	"nargs": 4,
@@ -306,6 +310,7 @@ verb_conjs = {
         "inf3-pass": "13ett4m4n",
         "inf4": "124minen",
         "inf5": "124m4isill4",  # +poss_suff
+	"jA": "124j4",
     },
     "fi-conj-saartaa": {
     	"nargs": 2,
@@ -365,6 +370,7 @@ verb_conjs = {
         "inf3-pass": "1Dett2m2n",
         "inf4": "1t2minen",
         "inf5": "1t2m2isill2",  # +poss_suff
+	"jA": "1t2j2",
     },
     "fi-conj-laskea": {
     	"nargs": 4,
@@ -424,6 +430,7 @@ verb_conjs = {
         "inf3-pass": "13ett4m4n",
         "inf4": "12eminen",
         "inf5": "12em4isill4",  # +poss_suff
+	"jA": "12ij4",
     },
     "fi-conj-tuntea": {
     	"nargs": 2,
@@ -483,6 +490,7 @@ verb_conjs = {
         "inf3-pass": "1Dett2m2n",
         "inf4": "1teminen",
         "inf5": "1tem2isill2",  # +poss_suff
+	"jA": "1tij2",
     },
     "fi-conj-lähteä": {
     	"nargs": 2,
@@ -542,6 +550,7 @@ verb_conjs = {
         "inf3-pass": "1hDett2m2n",
         "inf4": "1hteminen",
         "inf5": "1htem2isill2",  # +poss_suff
+	"jA": "1thtij2",
     },
     "fi-conj-sallia": {
     	"nargs": 4,
@@ -601,6 +610,7 @@ verb_conjs = {
         "inf3-pass": "13itt4m4n",
         "inf4": "12iminen",
         "inf5": "12im4isill4",  # +poss_suff
+	"jA": "12ij2",
     },
     "fi-conj-voida": {
     	"nargs": 2,
@@ -660,6 +670,7 @@ verb_conjs = {
         "inf3-pass": "1t2m2n",
         "inf4": "1minen",
         "inf5": "1m2isill2",  # +poss_suff
+	"jA": "1j2",
     },
     "fi-conj-saada": {
     	"nargs": 2,
@@ -719,6 +730,7 @@ verb_conjs = {
         "inf3-pass": "1@t2m2n",
         "inf4": "1@minen",
         "inf5": "1@m2isill2",  # +poss_suff
+	"jA": "1@j2",
     },
     "fi-conj-juoda": {
     	"nargs": 2,
@@ -778,6 +790,7 @@ verb_conjs = {
         "inf3-pass": "1t2m2n",
         "inf4": "1minen",
         "inf5": "1m2isill2",  # +poss_suff
+	"jA": "1j2",
     },
     "fi-conj-käydä": {
     	"nargs": 2,
@@ -837,6 +850,7 @@ verb_conjs = {
         "inf3-pass": "1yt2m2n",
         "inf4": "1yminen",
         "inf5": "1ym2isill2",  # +poss_suff
+	"jA": "1vij2",
     },
     "fi-conj-rohkaista": {
     	"nargs": 5,
@@ -896,6 +910,7 @@ verb_conjs = {
         "inf3-pass": "124st5m5n",
         "inf4": "134seminen",
         "inf5": "134sem5isill5",  # +poss_suff
+	"jA": "124sij5",
     },
     "fi-conj-tulla": {
     	"nargs": 5,
@@ -955,6 +970,7 @@ verb_conjs = {
         "inf3-pass": "124t5m5n",
         "inf4": "134eminen",
         "inf5": "134em5isill5",  # +poss_suff
+	"jA": "134ij2",
     },
     "fi-conj-tupakoida": {
     	"nargs": 2,
@@ -1014,6 +1030,7 @@ verb_conjs = {
         "inf3-pass": "1t2m2n",
         "inf4": ["1minen", "1tseminen"],
         "inf5": ["1m2isill2", "1tsem2isill2"], # +poss_suff
+	"jA": ["1j2", "1tsij2"],
     },
     "fi-conj-valita": {
     	"nargs": 2,
@@ -1073,6 +1090,7 @@ verb_conjs = {
         "inf3-pass": "1tt2m2n",
         "inf4": ["1tseminen"],
         "inf5": ["1tsem2isill2"], # +poss_suff
+	"jA": "1tsij2",
     },
     "fi-conj-juosta": {
     	"nargs": 2,
@@ -1132,6 +1150,7 @@ verb_conjs = {
         "inf3-pass": "1st2m2n",
         "inf4": ["1kseminen"],
         "inf5": ["1ksem2isill2"], # +poss_suff
+	"jA": "1ksij2",
     },
     "fi-conj-nähdä": {
     	"nargs": 2,
@@ -1191,6 +1210,7 @@ verb_conjs = {
         "inf3-pass": "1ht2m2n",
         "inf4": "1keminen",
         "inf5": "1kem2isill2",  # +poss_suff
+	"jA": "1kij2",
     },
     "fi-conj-vanheta": {
     	"nargs": 5,
@@ -1250,6 +1270,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "134neminen",
         "inf5": "134nem5isill5",  # +poss_suff
+	"jA": "124nij5",
     },
     "fi-conj-salata": {
     	"nargs": 4,
@@ -1309,6 +1330,7 @@ verb_conjs = {
         "inf3-pass": "124tt4m4n",
         "inf4": "1344minen",
         "inf5": "1344m4isill4",  # +poss_suff
+	"jA": "1244j4",
     },
     "fi-conj-katketa": {
     	"nargs": 5,
@@ -1368,6 +1390,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "1345minen",
         "inf5": "1345m5isill5",  # +poss_suff
+	"jA": "1245j5",
     },
     "fi-conj-selvitä": {
     	"nargs": 5,
@@ -1427,6 +1450,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "1345minen",
         "inf5": "1345m5isill5",  # +poss_suff
+	"jA": "1245j5",
     },
     "fi-conj-taitaa": {
     	"nargs": 2,
@@ -1486,6 +1510,7 @@ verb_conjs = {
         "inf3-pass": "1Dett2m2n",
         "inf4": "1t2minen",
         "inf5": "1t2m2isill2",  # +poss_suff
+	"jA": "1t2j2",
     },
     "fi-conj-kaikaa": {
         # This is a degenerative conjugation for certain verbs that are
@@ -1501,6 +1526,7 @@ verb_conjs = {
 	"cond-3sg-or-neg-neg": "12isi",
 	"cond-3pl-neg": "12isi",
 	"inf1": "122",
+	"jA": "122j2",
     },
     "fi-conj-kumajaa": {
     	"nargs": 2,
@@ -1561,6 +1587,7 @@ verb_conjs = {
         "inf3-pass": "12j2tt2m2n",
         "inf4": "12j2minen",
         "inf5": "12j2m2isill2",  # +poss_suff
+	"jA": "12j2j2",
     },
     "fi-conj-olla": {
     	"nargs": 0,
@@ -1620,6 +1647,7 @@ verb_conjs = {
         "inf3-pass": "oltaman",
         "inf4": "oleminen",
         "inf5": "olemaisilla",  # +poss_suff
+	"jA": "olija",
     },
     "fi-conj-ei": {
     	"nargs": 0,
@@ -1695,6 +1723,7 @@ verb_conjs = {
         "inf3-pass": "seistämän",
         "inf4": "seisominen",
         "inf5": "seisomaisilla",  # +poss_suff
+	"jA": "seisoja",
     },
 
     "fi-conj-virkkaa": {
@@ -1755,6 +1784,7 @@ verb_conjs = {
         "inf3-pass": "virkettämän",
         "inf4": "virkkaminen",
         "inf5": "virkkamaisilla",  # +poss_suff
+	"jA": "virkkaja",
     },
 
     "fi-conj-table": {

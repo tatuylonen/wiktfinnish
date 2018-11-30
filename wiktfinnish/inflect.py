@@ -42,7 +42,7 @@ argument_name_map = {
     "inf4": ["inf4_nomi"],
 
     # For fi-decl-pron and fi-decl
-    "": ["1s", "word"],
+    "": ["nom_sg", "1s", "word"],
     "gen-sg": ["2s"],
     "ptv-sg": ["3s", "par_sg"],
     "acc-sg": ["4s"],
@@ -215,7 +215,7 @@ def process_template(template, args, ill_sg_vowel=None):
             if not parts:
                 return None
             p = parts.pop()
-            if p not in "aeiouyäö":  # Must be vowel
+            if p not in "aeiouyäöp":  # Must be vowel or p
                 return None
             delparts.append(p)
         elif x == "/":
@@ -345,7 +345,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
     # various declensions in Wikipedia)
     nargs = decl.get("nargs", None)
     if nargs:
-        if nargs not in args and str(nargs) not in args:
+        if nargs > 1 and nargs not in args and str(nargs) not in args:
             #print("Template {}, does not have expected arg {}: {}"
             #      "".format(name, nargs, args))
             args = args.copy()
@@ -504,6 +504,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
         if templates is False and use_poss:
             # Try -poss template first if possessive suffix
             templates = decl.get(form + "-poss", False)
+            print("checked for -poss:", name, form+"-poss", templates)
         if templates is False:
             # Otherwise just use the default template
             templates = decl.get(form, None)
@@ -598,6 +599,9 @@ def inflect_nominal(name, args, form, comp="", poss="",
                 assert x.endswith("in")
                 x = x[:-2]
                 name = "fi-decl-sisin"
+            elif comp == "hkO":
+                assert x.endswith("hko") or x.endswith("hkö")
+                name = "fi-decl-valo"
             args = {"1": x, "2": word_to_aae(x)}
             ret = inflect_using(nounspecs.noun_decls, name, args, form,
                                 poss != "", clitic != "")
@@ -616,7 +620,7 @@ def inflect_nominal(name, args, form, comp="", poss="",
             results = results2
 
     # Handle e=1 for nominative singular
-    if form == "nom_sg" and args.get("e", "0") == "1":
+    if form == "" and args.get("e", "0") == "1":
         results2 = []
         for v in results:
             results2.append(v + "e")
@@ -652,28 +656,21 @@ def inflect_verbal(name, args, vform, comp="", case="",
 
     if not poss and vform in ("inf1-long", "inf5"):
         poss = "3x"
-    if vform == "inf2" and not case:
-        case = "ins-sg"
-    elif vform == "inf2-pass" and not case:
-        case = "ins-sg"
-    elif vform == "inf3" and not case:
-        case = "ins-sg"
-    elif vform == "inf3-pass" and not case:
-        case = "ins-sg"
 
-    # Default fi-conj-kumajaa to arg2 "a" (needed for "vipajaa")
-    # XXX is this still needed?  I think a more generic default has been
-    # implemented in inflect_using().  Test.
+    # Default fi-conj-kumajaa to arg2 "a" (needed for "vipajaa").  This is
+    # an excepton to the normal default rule in inflect_using().
     if name == "fi-conj-kumajaa" and "2" not in args and 2 not in args:
         args = args.copy()
         args[2] = "a"
 
     # Inflect the form using templates.
     results = inflect_using(verbspecs.verb_conjs, name, args, vform,
-                            case not in ("", "nom_sg") or
+                            case != "" or
                             poss != "", clitic != "")
 
-    if case:
+    if case or vform in ("pres-part", "pres-pass-part", "agnt-part",
+                         "nega-part",
+                         "inf2", "inf2-pass", "inf3", "inf3-pass", "inf4"):
         results2 = []
         for v in results:
             if vform in ("pres-part", "pres-pass-part", "agnt-part"):
@@ -718,6 +715,13 @@ def inflect_verbal(name, args, vform, comp="", case="",
                 name = "fi-decl-inf2"
                 args = {"1": v[:-3],
                         "2": v[-1]}
+            elif vform == "agnt-part":
+                if len(v) < 3:
+                    print("Invalid", vform, v, name, args)
+                    continue
+                assert v[-2:] in ("ma", "mä")
+                name = "fi-decl-koira"
+                args = {"1": v, "2": v[-1]}
             elif vform == "inf3":
                 if len(v) < 6:
                     print("Invalid", vform, v, name, args)

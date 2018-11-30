@@ -8,6 +8,7 @@
 # or normal form).
 COMPARATIVE_FORMS = (
     "",
+    "hkO",
     "comp",
     "sup",
     "manner",
@@ -120,6 +121,7 @@ VERB_FORMS = (
     "inf3-pass",
     "inf4",
     "inf5",
+    "jA",
 )
 
 # Names of all clitics and allowed clitic combinations.  The empty string
@@ -170,7 +172,7 @@ def all_forms_iter(pos, transitive=True,
     assert isinstance(pos, str)
 
     comp_forms = [""] if no_comp else COMPARATIVE_FORMS
-    case_forms = [""] if no_case else list(x for x in CASE_FORMS if x)
+    case_forms = [""] if no_case else CASE_FORMS
     poss_forms = [""] if no_poss else POSSESSIVE_FORMS
     clitic_forms = [""] if no_clitic else CLITIC_FORMS
 

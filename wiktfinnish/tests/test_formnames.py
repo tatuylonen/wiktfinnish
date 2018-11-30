@@ -22,7 +22,6 @@ class TestDecode(unittest.TestCase):
         for x in lst:
             assert isinstance(x, str)
         assert "" in lst
-        assert "nom-sg" in lst
         assert "nom-pl" in lst
         assert "ill-pl" in lst
         assert "acc-sg" in lst
@@ -127,7 +126,6 @@ class TestDecode(unittest.TestCase):
             assert case == "" or case in wiktfinnish.CASE_FORMS
             assert poss == "" or poss in wiktfinnish.POSSESSIVE_FORMS
             assert clitic in wiktfinnish.CLITIC_FORMS
-        print(cnt)
         assert cnt > 10000 and cnt < 50000
         assert num_comp > 0
 
@@ -137,7 +135,6 @@ class TestDecode(unittest.TestCase):
         for form in wiktfinnish.all_forms_iter("adv"):
             cnt += 1
             vform, comp, case, poss, clitic = form
-            print(form)
             assert vform == ""
             assert comp in wiktfinnish.COMPARATIVE_FORMS
             if comp != "":
@@ -145,7 +142,6 @@ class TestDecode(unittest.TestCase):
             assert case == ""
             assert poss == ""
             assert clitic in wiktfinnish.CLITIC_FORMS
-        print(cnt)
         assert cnt >= len(wiktfinnish.COMPARATIVE_FORMS)
         assert cnt <= (len(wiktfinnish.COMPARATIVE_FORMS) *
                        len(wiktfinnish.CLITIC_FORMS))
