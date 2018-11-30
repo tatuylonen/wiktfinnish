@@ -504,7 +504,6 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
         if templates is False and use_poss:
             # Try -poss template first if possessive suffix
             templates = decl.get(form + "-poss", False)
-            print("checked for -poss:", name, form+"-poss", templates)
         if templates is False:
             # Otherwise just use the default template
             templates = decl.get(form, None)

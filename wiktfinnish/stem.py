@@ -209,7 +209,6 @@ def decode_paradigm(stem, coding, pos=None):
         stem = parts[0]
         ae = "a"
     else:
-        print("nargs", nargs, "parts", parts, "stem", stem)
         if len(parts) != 2:
             return None
         stem, ae = parts
