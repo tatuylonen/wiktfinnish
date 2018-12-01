@@ -248,7 +248,7 @@ verb_conjs = {
         "nega-part": "1t2m2tOn",
         "inf1": "1t22",
         "inf1-long": "1t22kse",  # +poss_suff
-        "inf2": "1t2ess2",
+        "inf2": ["1t2ess2", "1tess2"],
         "inf2-pass": "1Dett2ess2",
         "inf3": "1t2m2ss2",
         "inf3-pass": "1Dett2m2n",
@@ -1529,7 +1529,7 @@ verb_conjs = {
         "nega-part": "1t2m2tOn",
         "inf1": "1t22",
         "inf1-long": "1t22kse",  # +poss_suff
-        "inf2": "1t2ess2",
+        "inf2": ["1t2ess2", "1tess2"],
         "inf2-pass": "1Dett2ess2",
         "inf3": "1t2m2ss2",
         "inf3-pass": "1Dett2m2n",
