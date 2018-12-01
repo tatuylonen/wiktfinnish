@@ -14,6 +14,7 @@
 verb_conjs = {
     "fi-conj-sanoa": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "134n",
         "pres-2sg": "134t",
         "pres-3sg": "124@",
@@ -74,6 +75,7 @@ verb_conjs = {
     },
     "fi-conj-muistaa": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "pres-1sg": "134n",
         "pres-2sg": "134t",
         "pres-3sg": "1244",
@@ -134,6 +136,7 @@ verb_conjs = {
     },
     "fi-conj-huutaa": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "pres-1sg": "1D2n",
         "pres-2sg": "1D2t",
         "pres-3sg": "1t22",
@@ -194,6 +197,7 @@ verb_conjs = {
     },
     "fi-conj-soutaa": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "pres-1sg": "1D2n",
         "pres-2sg": "1D2t",
         "pres-3sg": "1t22",
@@ -254,6 +258,7 @@ verb_conjs = {
     },
     "fi-conj-kaivaa": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "pres-1sg": "134n",
         "pres-2sg": "134t",
         "pres-3sg": "1244",
@@ -314,6 +319,7 @@ verb_conjs = {
     },
     "fi-conj-saartaa": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "pres-1sg": "1D2n",
         "pres-2sg": "1D2t",
         "pres-3sg": "1t22",
@@ -374,6 +380,7 @@ verb_conjs = {
     },
     "fi-conj-laskea": {
     	"nargs": 4,
+	"min-stem-len": 2,
         "pres-1sg": "13en",
         "pres-2sg": "13et",
         "pres-3sg": "12ee",
@@ -434,6 +441,7 @@ verb_conjs = {
     },
     "fi-conj-tuntea": {
     	"nargs": 2,
+	"internal": True,
         "pres-1sg": "1Den",
         "pres-2sg": "1Det",
         "pres-3sg": "1tee",
@@ -494,6 +502,7 @@ verb_conjs = {
     },
     "fi-conj-lähteä": {
     	"nargs": 2,
+	"min-stem-len": 1,
         "pres-1sg": "1hDen",
         "pres-2sg": "1hDet",
         "pres-3sg": "1htee",
@@ -554,6 +563,7 @@ verb_conjs = {
     },
     "fi-conj-sallia": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "pres-1sg": "13in",
         "pres-2sg": "13it",
         "pres-3sg": "12ii",
@@ -614,6 +624,7 @@ verb_conjs = {
     },
     "fi-conj-voida": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "pres-1sg": "1n",
         "pres-2sg": "1t",
         "pres-3sg": "1",
@@ -674,6 +685,7 @@ verb_conjs = {
     },
     "fi-conj-saada": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "pres-1sg": "1@n",
         "pres-2sg": "1@t",
         "pres-3sg": "1@",
@@ -734,6 +746,7 @@ verb_conjs = {
     },
     "fi-conj-juoda": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "pres-1sg": "1n",
         "pres-2sg": "1t",
         "pres-3sg": "1",
@@ -794,6 +807,7 @@ verb_conjs = {
     },
     "fi-conj-käydä": {
     	"nargs": 2,
+	"internal": True,
         "pres-1sg": "1yn",
         "pres-2sg": "1yt",
         "pres-3sg": "1y",
@@ -854,6 +868,7 @@ verb_conjs = {
     },
     "fi-conj-rohkaista": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "134sen",
         "pres-2sg": "134set",
         "pres-3sg": "134see",
@@ -914,6 +929,7 @@ verb_conjs = {
     },
     "fi-conj-tulla": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "134en",
         "pres-2sg": "134et",
         "pres-3sg": "134ee",
@@ -974,6 +990,7 @@ verb_conjs = {
     },
     "fi-conj-tupakoida": {
     	"nargs": 2,
+	"min-stem-len": 6,
         "pres-1sg": ["1n", "1tsen"],
         "pres-2sg": ["1t", "1tset"],
         "pres-3sg": ["1", "1tsee"],
@@ -1034,6 +1051,7 @@ verb_conjs = {
     },
     "fi-conj-valita": {
     	"nargs": 2,
+	"min-stem-len": 4,
         "pres-1sg": ["1tsen"],
         "pres-2sg": ["1tset"],
         "pres-3sg": ["1tsee"],
@@ -1094,6 +1112,7 @@ verb_conjs = {
     },
     "fi-conj-juosta": {
     	"nargs": 2,
+	"internal": True,
         "pres-1sg": ["1ksen"],
         "pres-2sg": ["1kset"],
         "pres-3sg": ["1ksee"],
@@ -1154,6 +1173,7 @@ verb_conjs = {
     },
     "fi-conj-nähdä": {
     	"nargs": 2,
+	"internal": True,
         "pres-1sg": "1en",
         "pres-2sg": "1et",
         "pres-3sg": "1kee",
@@ -1214,6 +1234,7 @@ verb_conjs = {
     },
     "fi-conj-vanheta": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "134nen",
         "pres-2sg": "134net",
         "pres-3sg": "134nee",
@@ -1274,6 +1295,7 @@ verb_conjs = {
     },
     "fi-conj-salata": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "pres-1sg": "1344n",
         "pres-2sg": "1344t",
         "pres-3sg": "1344",
@@ -1334,6 +1356,7 @@ verb_conjs = {
     },
     "fi-conj-katketa": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "1345n",
         "pres-2sg": "1345t",
         "pres-3sg": "13455",
@@ -1394,6 +1417,7 @@ verb_conjs = {
     },
     "fi-conj-selvitä": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "pres-1sg": "1345n",
         "pres-2sg": "1345t",
         "pres-3sg": "13455",
@@ -1454,6 +1478,7 @@ verb_conjs = {
     },
     "fi-conj-taitaa": {
     	"nargs": 2,
+	"internal": True,
         "pres-1sg": "1D2n",
         "pres-2sg": "1D2t",
         "pres-3sg": "1t22",
@@ -1517,6 +1542,7 @@ verb_conjs = {
 	# practically only used in 3rd person indicative (and possibly
 	# conditional).  These are mostly poetic/archaic.
     	"nargs": 2,
+	"internal": True,
 	"pres-3sg": "122",
 	"pres-3pl": "122v2t",
 	"pres-3sg-neg": "122",
@@ -1530,6 +1556,7 @@ verb_conjs = {
     },
     "fi-conj-kumajaa": {
     	"nargs": 2,
+	"min-stem-len": 3,
 	"ignore-extra-args": True,
         "pres-1sg": "12j2n",
         "pres-2sg": "12j2t",
@@ -1591,6 +1618,7 @@ verb_conjs = {
     },
     "fi-conj-olla": {
     	"nargs": 0,
+	"internal": True,
         "pres-1sg": "olen",
         "pres-2sg": "olet",
         "pres-3sg": "on",
@@ -1651,6 +1679,7 @@ verb_conjs = {
     },
     "fi-conj-ei": {
     	"nargs": 0,
+	"internal": True,
         "pres-1sg": "en",
 	"pres-2sg": "et",
 	"pres-3sg": "ei",
@@ -1667,6 +1696,7 @@ verb_conjs = {
 
     "fi-conj-seistä": {
     	"nargs": 0,
+	"internal": True,
         "pres-1sg": "seison",
         "pres-2sg": "seisot",
         "pres-3sg": "seisoo",
@@ -1728,6 +1758,7 @@ verb_conjs = {
 
     "fi-conj-virkkaa": {
     	"nargs": 0,
+	"internal": True,
         "pres-1sg": "virkan",
         "pres-2sg": "virkat",
         "pres-3sg": "virkkaa",

@@ -128,12 +128,12 @@ def encode_paradigm(args):
     return stem, paradigm
 
 
-def decode_paradigm(stem, coding, pos=None):
+def decode_paradigm(stem, paradigm, pos=None):
     """Decodes stem and encoded conjugation/declension into arguments
     for generating word forms.  Returns None if stem or paradigm are
     invalid (or incompatible)."""
     assert isinstance(stem, str)
-    assert isinstance(coding, str)
+    assert isinstance(paradigm, str)
     assert pos is None or isinstance(pos, str)
     mode = None
     part = []
@@ -147,7 +147,7 @@ def decode_paradigm(stem, coding, pos=None):
 
     # Parse the coded paradigm.
     name = None
-    for ch in coding + "X":
+    for ch in paradigm + "X":
         if not ch.isupper():
             part.append(ch)
             continue
@@ -170,7 +170,7 @@ def decode_paradigm(stem, coding, pos=None):
         elif mode is None:
             pass
         else:
-            print("Unhandled mode in decode:", coding, mode)
+            print("Unhandled mode in decode:", paradigm, mode)
             return None
         mode = ch
 
@@ -223,3 +223,44 @@ def decode_paradigm(stem, coding, pos=None):
         args[str(nargs)] = ae
 
     return args
+
+
+def valid_unknown_stem(stem, paradigm):
+    """Checks whether the given stem is valid for the paradigm.  This is
+    intended for unknown paradigms, and may return False for some exceptional
+    known words."""
+    if paradigm is None:
+        if stem is None:
+            return False
+        if len(stem) < 1:
+            return False
+        if stem.find(SEPARATOR) >= 0:
+            return False
+        return True
+
+    # Try to decode the paradigm
+    args = decode_paradigm(stem, paradigm)
+    if args is None:
+        return False
+
+    # Get the declension/conjugation info
+    name = args["template_name"]
+    if paradigm.startswith("N"):
+        decl = nounspecs.noun_decls[name]
+    else:
+        decl = verbspecs.verb_conjs[name]
+
+    # If it is an internal one (i.e., not productive), don't use for unknown
+    if decl.get("internal", False):
+        return False  # This paradigm is not productive
+
+    # Check if stem length meets minimum length for the declension
+    min_stem_len = decl.get("min-stem-len", 0)
+    if len(args.get("1", "")) < min_stem_len:
+        return False  # Stem too short
+
+    # If the declension takes no arguments, stem should be empty
+    if decl.get("nargs", 0) == 0 and len(stem) > 0:
+        return False  # Step specified when no args expected
+
+    return True

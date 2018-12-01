@@ -3,7 +3,7 @@
 # Copyright (c) 2018 Tatu Ylonen.  See https://ylonen.org
 
 import unittest
-from wiktfinnish import encode_paradigm, decode_paradigm
+from wiktfinnish import encode_paradigm, decode_paradigm, valid_unknown_stem
 
 class TestStem(unittest.TestCase):
 
@@ -94,3 +94,21 @@ class TestStem(unittest.TestCase):
         assert d["template_name"] == "fi-conj-saada"
         assert d["1"] == "my"
         assert d["2"] == "ä"
+
+    def test_valid1(self):
+        assert not valid_unknown_stem(None, None)
+        assert valid_unknown_stem("foo", None)
+        assert not valid_unknown_stem("", None)
+        assert valid_unknown_stem("koir|a", "Nkoira")
+        assert not valid_unknown_stem("koir||a", "Nkoira")
+        assert not valid_unknown_stem("koira", "Nkoira")
+        assert not valid_unknown_stem("", "Nkoira")
+        assert not valid_unknown_stem("|", "Nkoira")
+        assert valid_unknown_stem("omen|a", "Nomena")
+        assert not valid_unknown_stem("o", "Nomena")
+        assert valid_unknown_stem("katk|e|a", "Vkatketa")
+        assert not valid_unknown_stem("katk|a", "Vkatketa")
+        assert not valid_unknown_stem("katk|a", "Vkatketa")
+        assert not valid_unknown_stem("|e|a", "Vkatketa")
+        assert valid_unknown_stem("vali|a", "Vvalita")
+        assert not valid_unknown_stem("val|a", "Vvalita")

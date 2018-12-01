@@ -669,7 +669,8 @@ def inflect_verbal(name, args, vform, comp="", case="",
 
     if case or vform in ("pres-part", "pres-pass-part", "agnt-part",
                          "nega-part",
-                         "inf2", "inf2-pass", "inf3", "inf3-pass", "inf4"):
+                         "inf2", "inf2-pass", "inf3", "inf3-pass", "inf4",
+                         "jA"):
         results2 = []
         for v in results:
             if vform in ("pres-part", "pres-pass-part", "agnt-part"):
@@ -745,6 +746,13 @@ def inflect_verbal(name, args, vform, comp="", case="",
                 name = "fi-decl-nainen"
                 args = {"1": v[:-3],
                         "2": word_to_aae(v)}
+            elif vform == "jA":
+                if len(v) < 5:
+                    print("Invalid", vform, v, name, args)
+                    continue
+                assert v.endswith("ja") or v.endswith("jä")
+                name = "fi-decl-kulkija"
+                args = {"1": v[:-1], "2": v[-1]}
             else:
                 assert vform == "nega-part"
                 name = "fi-decl-onneton"

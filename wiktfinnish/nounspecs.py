@@ -39,6 +39,7 @@ decl_name_map = {
 noun_decls = {
     "fi-decl-valo": {
     	"nargs": 5,
+	"min-stem-len": 1,
 	"default": {"4": "o"},
         "": "124",
         "gen-sg": "134n",
@@ -84,6 +85,7 @@ noun_decls = {
     },
     "fi-decl-palvelu": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -128,6 +130,7 @@ noun_decls = {
     },
     "fi-decl-valtio": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -172,6 +175,7 @@ noun_decls = {
     },
     "fi-decl-laatikko": {
     	"nargs": 5,
+	"min-stem-len": 1,
 	"default": {"4": "o"},
         "": "124",
         "gen-sg": "134n",
@@ -217,6 +221,7 @@ noun_decls = {
     },
     "fi-decl-risti": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "": "12i",
         "gen-sg": "13in",
         "gen-sg-poss": "12i",
@@ -261,6 +266,7 @@ noun_decls = {
     },
     "fi-decl-paperi": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1i",
         "gen-sg": "1in",
         "gen-sg-poss": "1i",
@@ -305,6 +311,7 @@ noun_decls = {
     },
     "fi-decl-ovi": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "": "12i",
         "-poss": "12e",
         "gen-sg": "13en",
@@ -350,6 +357,7 @@ noun_decls = {
     },
     "fi-decl-nalle": {
     	"nargs": 4,
+	"min-stem-len": 1,
         "": "12e",
         "gen-sg": "13en",
         "gen-sg-poss": "12e",
@@ -394,6 +402,7 @@ noun_decls = {
     },
     "fi-decl-kala": {
     	"nargs": 4,
+	"min-stem-len": 1,
 	"default": {"4": "a"},
         "": "124",
         "gen-sg": "134n",
@@ -439,6 +448,7 @@ noun_decls = {
     },
     "fi-decl-koira": {
     	"nargs": 4,
+	"min-stem-len": 1,
 	"default": {"4": "a"},
         "": "124",
         "gen-sg": "134n",
@@ -484,6 +494,7 @@ noun_decls = {
     },
     "fi-decl-omena": {
     	"nargs": 2,
+	"min-stem-len": 2,
 	"default": {"2": "a"},
         "": "12",
         "gen-sg": "12n",
@@ -530,6 +541,7 @@ noun_decls = {
     },
     "fi-decl-kulkija": {
     	"nargs": 2,
+	"min-stem-len": 3,
 	"default": {"2": "a"},
         "": "12",
         "gen-sg": "12n",
@@ -575,6 +587,7 @@ noun_decls = {
     },
     "fi-decl-katiska": {
     	"nargs": 2,
+	"min-stem-len": 4,
 	"default": {"2": "a"},
         "": "12",
         "gen-sg": "12n",
@@ -622,6 +635,7 @@ noun_decls = {
     },
     "fi-decl-solakka": {
     	"nargs": 4,
+	"min-stem-len": 3,
 	"default": {"4": "a"},
         "": "124",
         "gen-sg": "134n",
@@ -669,6 +683,7 @@ noun_decls = {
     },
     "fi-decl-korkea": {
     	"nargs": 2,
+	"min-stem-len": 3,
 	"default": {"2": "a"},
         "": "12",
         "gen-sg": "12n",
@@ -714,6 +729,7 @@ noun_decls = {
     },
     "fi-decl-vanhempi": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1mpi",
         "-poss": "1mp2",
         "gen-sg": "1mm2n",
@@ -754,6 +770,7 @@ noun_decls = {
     "fi-decl-vapaa": {
         # Note: also includes words like "takuu"
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1@",
         "gen-sg": "1@n",
         "gen-sg-poss": "1@",
@@ -798,6 +815,7 @@ noun_decls = {
     },
     "fi-decl-maa": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -842,6 +860,7 @@ noun_decls = {
     },
     "fi-decl-suo": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -886,6 +905,7 @@ noun_decls = {
     },
     "fi-decl-rosé": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -930,6 +950,7 @@ noun_decls = {
     },
     "fi-decl-parfait": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1",
         "-clitic": "1'",
         "-poss": "1'",
@@ -976,6 +997,7 @@ noun_decls = {
     },
     "fi-decl-tiili": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1i",
         "-poss": "1e",
         "gen-sg": "1en",
@@ -1021,6 +1043,7 @@ noun_decls = {
     },
     "fi-decl-uni": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1i",
         "-poss": "1e",
         "gen-sg": "1en",
@@ -1066,6 +1089,7 @@ noun_decls = {
     },
     "fi-decl-toimi": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1mi",
         "-poss": "1me",
         "gen-sg": "1men",
@@ -1111,6 +1135,7 @@ noun_decls = {
     },
     "fi-decl-pieni": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1i",
         "-poss": "1e",
         "gen-sg": "1en",
@@ -1156,6 +1181,7 @@ noun_decls = {
     },
     "fi-decl-käsi": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1si",
         "-poss": "1te",
         "gen-sg": "1den",
@@ -1201,6 +1227,7 @@ noun_decls = {
     },
     "fi-decl-kynsi": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1si",
         "-poss": "1te",
         "gen-sg": "1nen",
@@ -1246,6 +1273,7 @@ noun_decls = {
     },
     "fi-decl-lapsi": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1si",
         "-poss": "1se",
         "gen-sg": "1sen",
@@ -1291,6 +1319,7 @@ noun_decls = {
     },
     "fi-decl-veitsi": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1tsi",
         "-poss": "1tse",
         "gen-sg": "1tsen",
@@ -1336,6 +1365,7 @@ noun_decls = {
     },
     "fi-decl-kaksi": {
     	"nargs": 2,
+	"internal": True,
         "": "1ksi",
         "-poss": "1hte",
         "gen-sg": "1hden",
@@ -1381,6 +1411,7 @@ noun_decls = {
     },
     "fi-decl-sisar": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "": "124",
         "-poss": "134e",
         "gen-sg": "134en",
@@ -1426,6 +1457,7 @@ noun_decls = {
     },
     "fi-decl-kytkin": {
     	"nargs": 5,
+	"min-stem-len": 2,
 	"default": {"4": "i"},
         "": "124n",
         "-poss": "134me",
@@ -1472,6 +1504,7 @@ noun_decls = {
     },
     "fi-decl-onneton": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "12-tOn",
         "-poss": "12-ttOm2",
         "gen-sg": "12-ttOm2n",
@@ -1517,6 +1550,7 @@ noun_decls = {
     },
     "fi-decl-lämmin": {
     	"nargs": 0,
+	"internal": True,
         "": "1lämmin",
         "-poss": "1lämpimä",
         "gen-sg": "1lämpimän",
@@ -1562,6 +1596,7 @@ noun_decls = {
     },
     "fi-decl-sisin": {
     	"nargs": 2,
+	"internal": True,
         "": "1in",
         "-poss": "1imp2",
         "gen-sg": "1imm2n",
@@ -1601,6 +1636,7 @@ noun_decls = {
     },
     "fi-decl-vasen": {
     	"nargs": 0,
+	"internal": True,
         "": "1vasen",
         "-poss": "1vasempa",
         "gen-sg": "1vasemman",
@@ -1645,6 +1681,7 @@ noun_decls = {
     },
     "fi-decl-nainen": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1nen",
         "-poss": "1se",
         "gen-sg": "1sen",
@@ -1690,6 +1727,7 @@ noun_decls = {
     },
     "fi-decl-vastaus": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1s",
         "-poss": "1kse",
         "gen-sg": "1ksen",
@@ -1735,6 +1773,7 @@ noun_decls = {
     },
     "fi-decl-kalleus": {
     	"nargs": 2,
+	"min-stem-len": 4,
         "": "1s",
         "-poss": "1te",
         "gen-sg": "1den",
@@ -1780,6 +1819,7 @@ noun_decls = {
     },
     "fi-decl-vieras": {
     	"nargs": 5,
+	"min-stem-len": 1,
 	"default": {"4": "a"},
         "": "124s",
         "-poss": "134@",
@@ -1826,6 +1866,7 @@ noun_decls = {
     },
     "fi-decl-mies": {
     	"nargs": 1,
+	"internal": True,
         "": "1mies",
         "-poss": "1miehe",
         "gen-sg": "1miehen",
@@ -1871,6 +1912,7 @@ noun_decls = {
     },
     "fi-decl-ohut": {
     	"nargs": 5,
+	"min-stem-len": 1,
 	"default": {"4": "u"},
         "": "124t",
         "-poss": "134e",
@@ -1917,6 +1959,7 @@ noun_decls = {
     },
     "fi-decl-kevät": {
     	"nargs": 2,
+	"min-stem-len": 3,
         "": "1t",
         "-poss": "12",
         "gen-sg": "12n",
@@ -1962,6 +2005,8 @@ noun_decls = {
     },
     "fi-decl-kahdeksas": {
     	"nargs": 2,
+	"internal": True,
+	"min-stem-len": 2,
         "": "1s",
         "-poss": "1nte",
         "gen-sg": "1nnen",
@@ -2007,6 +2052,7 @@ noun_decls = {
     },
     "fi-decl-tuhat": {
     	"nargs": 2,
+	"internal": True,
         "": "1t",
         "-poss": "1nte",
         "gen-sg": "1nnen",
@@ -2052,6 +2098,7 @@ noun_decls = {
     },
     "fi-decl-kuollut": {
     	"nargs": 2,
+	"internal": True,
         "": "12-Ut",
         "-poss": "1ee",
         "gen-sg": "1een",
@@ -2097,6 +2144,7 @@ noun_decls = {
     },
     "fi-decl-hame": {
     	"nargs": 4,
+	"min-stem-len": 2,
         "": "12e",
         "-poss": "13ee",
         "gen-sg": "13een",
@@ -2143,6 +2191,7 @@ noun_decls = {
 
     "fi-decl-askel": {
     	"nargs": 5,
+	"min-stem-len": 1,
         "": ["124", "134e"],
         "-poss": ["134e", "134ee"],
         "gen-sg": ["134en", "134een"],
@@ -2189,6 +2238,7 @@ noun_decls = {
 
     "fi-decl-filee": {
     	"nargs": 2,
+	"min-stem-len": 2,
         "": "1",
         "gen-sg": "1n",
         "gen-sg-poss": "1",
@@ -2234,6 +2284,7 @@ noun_decls = {
 
     "fi-decl-maa-dot": {
     	"nargs": 3,
+	"min-stem-len": 1,
         "": "1",
 	"-clitic": "1:",
 	"-poss": "1:",
@@ -2281,6 +2332,7 @@ noun_decls = {
 
     "fi-decl-filee-dot": {
     	"nargs": 3,
+	"min-stem-len": 1,
         "": "1",
 	"-clitic": "1:",
 	"-poss": "1:",
