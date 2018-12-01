@@ -559,7 +559,7 @@ verb_conjs = {
         "inf3-pass": "1hDett2m2n",
         "inf4": "1hteminen",
         "inf5": "1htem2isill2",  # +poss_suff
-	"jA": "1thtij2",
+	"jA": "1htij2",
     },
     "fi-conj-sallia": {
     	"nargs": 4,
@@ -620,7 +620,7 @@ verb_conjs = {
         "inf3-pass": "13itt4m4n",
         "inf4": "12iminen",
         "inf5": "12im4isill4",  # +poss_suff
-	"jA": "12ij2",
+	"jA": "12ij4",
     },
     "fi-conj-voida": {
     	"nargs": 2,
@@ -925,7 +925,7 @@ verb_conjs = {
         "inf3-pass": "124st5m5n",
         "inf4": "134seminen",
         "inf5": "134sem5isill5",  # +poss_suff
-	"jA": "124sij5",
+	"jA": "134sij5",
     },
     "fi-conj-tulla": {
     	"nargs": 5,
@@ -986,7 +986,7 @@ verb_conjs = {
         "inf3-pass": "124t5m5n",
         "inf4": "134eminen",
         "inf5": "134em5isill5",  # +poss_suff
-	"jA": "134ij2",
+	"jA": "134ij5",
     },
     "fi-conj-tupakoida": {
     	"nargs": 2,
@@ -1291,7 +1291,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "134neminen",
         "inf5": "134nem5isill5",  # +poss_suff
-	"jA": "124nij5",
+	"jA": "134nij5",
     },
     "fi-conj-salata": {
     	"nargs": 4,
@@ -1352,7 +1352,7 @@ verb_conjs = {
         "inf3-pass": "124tt4m4n",
         "inf4": "1344minen",
         "inf5": "1344m4isill4",  # +poss_suff
-	"jA": "1244j4",
+	"jA": "1344j4",
     },
     "fi-conj-katketa": {
     	"nargs": 5,
@@ -1413,7 +1413,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "1345minen",
         "inf5": "1345m5isill5",  # +poss_suff
-	"jA": "1245j5",
+	"jA": "1345j5",
     },
     "fi-conj-selvitä": {
     	"nargs": 5,
@@ -1474,7 +1474,7 @@ verb_conjs = {
         "inf3-pass": "124tt5m5n",
         "inf4": "1345minen",
         "inf5": "1345m5isill5",  # +poss_suff
-	"jA": "1245j5",
+	"jA": "1345j5",
     },
     "fi-conj-taitaa": {
     	"nargs": 2,
@@ -1552,7 +1552,6 @@ verb_conjs = {
 	"cond-3sg-or-neg-neg": "12isi",
 	"cond-3pl-neg": "12isi",
 	"inf1": "122",
-	"jA": "122j2",
     },
     "fi-conj-kumajaa": {
     	"nargs": 2,
@@ -1614,7 +1613,6 @@ verb_conjs = {
         "inf3-pass": "12j2tt2m2n",
         "inf4": "12j2minen",
         "inf5": "12j2m2isill2",  # +poss_suff
-	"jA": "12j2j2",
     },
     "fi-conj-olla": {
     	"nargs": 0,
