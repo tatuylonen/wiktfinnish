@@ -105,6 +105,8 @@ def encode_paradigm(args):
                              ill_sg_vowel + ill_sg_vowel2)
     if nargs > 1:
         stem += SEPARATOR + ae
+    elif nargs == 0:
+        stem = ""
 
     # Now encode it into a string.  Verbal encodings begin with a V
     # and nominal encodings with a N.

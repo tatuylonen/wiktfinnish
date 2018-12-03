@@ -210,6 +210,15 @@ def process_template(template, args, ill_sg_vowel=None):
                 parts.append(p[-1])
             else:
                 parts.append("d")
+        elif x == "I":
+            # Inserts either previously removed character or "e" if it was
+            # "i".
+            if not delparts:
+                return None
+            if delparts[-1] == "i":
+                parts.append("e")
+            else:
+                parts.append(delparts[-1])
         elif x == "-":
             # Drop last, move to delparts so it counts for gradation
             if not parts:
@@ -478,7 +487,8 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
                     v = v[:-1]
 
             # Add the value to the results.
-            results.append(v)
+            if v not in results:
+                results.append(v)
 
     formarg = re.sub("-", "_", form)
     v = args.get(formarg, None)
@@ -523,12 +533,12 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
         # Generate word forms for each template
         for template in templates:
             v = process_template(template, args, ill_sg_vowel=ill_sg_vowel)
-            if v:
+            if v and v not in results:
                 results.append(v)
             # Kludge to handle certain words with two vowel choices in ill-sg
             if ill_sg_vowel2 is not None:
                 v = process_template(template, args, ill_sg_vowel=ill_sg_vowel2)
-                if v:
+                if v and v not in results:
                     results.append(v)
     return results
 
@@ -601,7 +611,7 @@ def inflect_nominal(name, args, form, comp="", poss="",
             elif comp == "hkO":
                 assert x.endswith("hko") or x.endswith("hkö")
                 name = "fi-decl-valo"
-            args = {"1": x, "2": word_to_aae(x)}
+            args = {"1": x, "5": word_to_aae(x)}
             ret = inflect_using(nounspecs.noun_decls, name, args, form,
                                 poss != "", clitic != "")
             results.extend(ret)
@@ -668,7 +678,7 @@ def inflect_verbal(name, args, vform, comp="", case="",
                             poss != "", clitic != "")
 
     if case or vform in ("pres-part", "pres-pass-part", "agnt-part",
-                         "nega-part",
+                         "nega-part", "past-part", "past-pass-part",
                          "inf2", "inf2-pass", "inf3", "inf3-pass", "inf4",
                          "jA"):
         results2 = []
@@ -747,7 +757,7 @@ def inflect_verbal(name, args, vform, comp="", case="",
                 args = {"1": v[:-3],
                         "2": word_to_aae(v)}
             elif vform == "jA":
-                if len(v) < 5:
+                if len(v) < 4:
                     print("Invalid", vform, v, name, args)
                     continue
                 assert v.endswith("ja") or v.endswith("jä")

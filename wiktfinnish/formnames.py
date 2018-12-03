@@ -235,12 +235,15 @@ def all_forms_iter(pos, transitive=True,
                 # We treat the -minen noun derivative as inf4 and thus allow
                 # full nominal inflection on inf4.
                 cases = case_forms
-            if vform in ("pres-part", "past-part",
-                         "pres-pass-part", "past-pass-part",
-                         "nega-part"):
+            if vform in ("pres-part", "pres-pass-part"):
                 comps = comp_forms
+            elif vform in ("past-part", "past-pass-part", "nega-part"):
+                comps = ("", "comp", "sup")
             for comp in comps:
-                if comp in ("manner", "comp-manner", "sup-manner"):
+                if comp == "hkO":
+                    if vform not in ("pres-pass-part",):
+                        continue
+                elif comp in ("manner", "comp-manner", "sup-manner"):
                     if vform not in ("pres-part", "pres-pass-part",
                                      "past-part", "past-pass-part",
                                      "nega-part"):
