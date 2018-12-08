@@ -181,9 +181,11 @@ def decode_paradigm(stem, paradigm, pos=None):
 
     # Get the number of arguments for the declension/conjugation.
     if name.startswith("fi-decl"):
-        decl = nounspecs.noun_decls[name]
+        decl = nounspecs.noun_decls.get(name)
     else:
-        decl = verbspecs.verb_conjs[name]
+        decl = verbspecs.verb_conjs.get(name)
+    if decl is None:
+        return None
     nargs = decl["nargs"]
 
     # Parse parts of the stem.

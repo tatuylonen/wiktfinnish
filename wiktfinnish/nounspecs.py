@@ -3112,7 +3112,7 @@ noun_decls = {
         "abe-pl": "kaikitta",
         "cmt": "kaikkine",
     },
-    "fi-decl-moni": {
+    "fi-decl-muuan": {
         "internal": True,
 	"nargs": 0,
 	"no-poss": True,
