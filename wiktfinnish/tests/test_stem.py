@@ -3,7 +3,7 @@
 # Copyright (c) 2018 Tatu Ylonen.  See https://ylonen.org
 
 import unittest
-from wiktfinnish import encode_paradigm, decode_paradigm, valid_unknown_stem
+from wiktfinnish import encode_paradigm, decode_paradigm, valid_unknown_stem, is_guessable, paradigm_nargs
 
 class TestStem(unittest.TestCase):
 
@@ -112,3 +112,22 @@ class TestStem(unittest.TestCase):
         assert not valid_unknown_stem("|e|a", "Vkatketa")
         assert valid_unknown_stem("vali|a", "Vvalita")
         assert not valid_unknown_stem("val|a", "Vvalita")
+
+    def test_guessable(self):
+        assert is_guessable("foo", None)
+        assert is_guessable("koir|a", "Nkoira")
+        assert is_guessable("sal|a", "Vsalata")
+        assert is_guessable("paper|a", "Npaperi")
+        assert not is_guessable("invstem", "Nkoira")
+        assert not is_guessable("koir|a", "Nunknownpara")
+        assert not is_guessable("", "Volla")
+        assert not is_guessable("tai|a", "Vtaitaa")
+
+    def test_nargs(self):
+        assert paradigm_nargs("foo", None) == 0
+        assert paradigm_nargs("foo|a", "Ninvalidpara") == 0
+        assert paradigm_nargs("foo|a", "Vinvalidpara") == 0
+        assert paradigm_nargs("koir|a", "Nkoira") == 4
+        assert paradigm_nargs("paper|a", "Npaperi") == 2
+        assert paradigm_nargs("tai|a", "Vtaitaa") == 2
+        assert paradigm_nargs("", "Volla") == 0

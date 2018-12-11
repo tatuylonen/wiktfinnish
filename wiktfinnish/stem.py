@@ -37,7 +37,6 @@ def encode_paradigm(args):
     else:
         decl = verbspecs.verb_conjs.get(name)
     if decl is None:
-        print("UNRECOGNIZED DECLENSION", name, args)
         return None, None
 
     # We do not process compound word declensions for words that inflect
@@ -268,3 +267,75 @@ def valid_unknown_stem(stem, paradigm):
         return False  # Step specified when no args expected
 
     return True
+
+
+def is_exceptional(args):
+    """Returns true if the arguments reflect exceptional inflection
+    (one of the declensions where forms are expressly listed)."""
+    # Exception paradigms cannot be encoded using this function
+    if "template_name" not in args:
+        print("is_exceptional:", args)
+        assert "template_name" in args
+    name = args["template_name"]
+    return name in ("fi-decl", "fi-decl-pron", "fi-conj", "fi-conj-table")
+
+
+def is_compound_declension(args):
+    """Returns true if the arguments reflect a declension for compounds that
+    inflect in more than one position."""
+
+    # Get the number of arguments for the declension/conjugation.
+    if "template_name" not in args:
+        print("is_compound_declension:", args)
+        assert "template_name" in args
+    name = args["template_name"]
+    if name.startswith("fi-decl"):
+        decl = nounspecs.noun_decls.get(name)
+    else:
+        decl = verbspecs.verb_conjs.get(name)
+    if decl is None:
+        return False
+    return decl.get("split") != None
+
+
+def is_guessable(stem, paradigm):
+    """Returns true if the arguments reflect a declension that is productive
+    and can be returned when guessing lemmas.  Null paradigm is considered
+    guessable."""
+    if not paradigm:
+        return True
+
+    args = decode_paradigm(stem, paradigm)
+    if args is None:
+        return False  # Invalid stem/paradigm
+
+    name = args["template_name"]
+    if name.startswith("fi-decl"):
+        decl = nounspecs.noun_decls.get(name)
+    else:
+        decl = verbspecs.verb_conjs.get(name)
+    if decl is None:
+        return False
+    return not decl.get("internal", False)
+
+
+def paradigm_nargs(stem, paradigm):
+    """Returns the number of arguments the paradigm takes.  0 is returned if
+    the paradigm is invalid or takes no arguments (also if paradigm is
+    None)."""
+    if not paradigm:
+        return 0
+
+    args = decode_paradigm(stem, paradigm)
+    if args is None:
+        return 0
+
+    name = args["template_name"]
+    if name.startswith("fi-decl"):
+        decl = nounspecs.noun_decls.get(name)
+    else:
+        decl = verbspecs.verb_conjs.get(name)
+    if decl is None:
+        return 0
+
+    return decl.get("nargs", 0)

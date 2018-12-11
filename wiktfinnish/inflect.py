@@ -347,7 +347,7 @@ def inflect_using(decls, name, args, form, use_poss, use_clitic):
     # Look up the inflection data for the declension/conjugation
     decl = decls.get(name, None)
     if decl is None:
-        print("Unrecognized declension/conjugation name:", name)
+        # print("Unrecognized declension/conjugation name:", name)
         return []
 
     # Default last argument to a/ä if it does not exist (it is missing from
@@ -553,7 +553,8 @@ def inflect_nominal(name, args, form, comp="", poss="",
     if name not in nounspecs.noun_decls and name not in nounspecs.decl_name_map:
         if name not in undef_decl_warned:
             undef_decl_warned.add(name)
-            print("inflect_nominal: unrecognized declension", name, "for", args)
+            # print("inflect_nominal: unrecognized declension", name,
+            #       "for", args)
         return []
     assert form in formnames.CASE_FORMS
     assert comp in formnames.COMPARATIVE_FORMS
@@ -652,8 +653,8 @@ def inflect_verbal(name, args, vform, comp="", case="",
     if name not in verbspecs.verb_conjs:
         if name not in undef_decl_warned:
             undef_decl_warned.add(name)
-            print("inflect_verbal: unrecognized verb conjucation", name, "for",
-                  args)
+            # print("inflect_verbal: unrecognized verb conjucation", name,
+            #       "for", args)
         return []
     assert vform in formnames.VERB_FORMS
     assert poss in formnames.POSSESSIVE_FORMS
