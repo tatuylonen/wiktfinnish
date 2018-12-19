@@ -112,11 +112,13 @@ def last_char_to_vowel(word):
     # punctuation, perhaps.
     for last in reversed(word):
         last = last.lower()
-        for ch, prev in (("e", "eébcçdgptvwz"),
-                         ("o", "ohk"),
-                         ("ä", "äflmnrsx"),
-                         ("i", "ij"),
-                         ("u", "uq"),
+        for ch, prev in (("a", "a/+£"),
+                         ("e", "eébcçdgptvwz&*:."),
+                         ("o", "ohk€å"),
+                         ("ä", "äflmnrsx§"),
+                         ("ö", "ö"),
+                         ("i", "ij%$"),
+                         ("u", "uq,"),
                          ("y", "yü")):
             if last in prev:
                 return ch

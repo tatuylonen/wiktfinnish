@@ -14,6 +14,25 @@ SEPARATOR = "|"  # XXX for now for readability of data files
 # Declensions for which we store ill-sg vowel in stem
 ILL_SG_DECLS = ("fi-decl-parfait", "fi-decl-rosé")
 
+# Lists which gradations block other gradations in lemma guessing.
+blocked_map = [
+    ["Grkk-rk", "Gkk-k", "Gk-", "Gk-j"],
+    ["Gkk-k", "Gk-", "Gk-j"],
+    ["Gk-kk", "G-k", "Gj-k"],
+    ["Gnk-ng", "Gk-g", "Gk-", "Gk-j"],
+    ["Gng-nk", "Gg-k", "Gg-gg"],
+    ["Ggg-g", "Gng-nk", "Gg-k"],
+    ["Grt-rr", "Gt-d", "Gt-tt"],
+    ["Grr-rt", "Gd-t"],
+    ["Gnt-nn", "Gt-d", "Gt-tt"],
+    ["Gnn-nt", "Gd-t"],
+    ["Glt-ll", "Gt-d"],
+    ["Gll-lt", "Gd-t", "Gt-tt"],
+    ["Gpp-p", "Gp-v"],
+    ["Gp-pp", "Gv-p"],
+    ["Gmp-mm", "Gp-v"],
+    ["Gmm-mp", "Gv-p"],
+]
 
 def encode_paradigm(args):
     """Encodes conjugation/declination into a stem and a string.  Returns
@@ -66,6 +85,24 @@ def encode_paradigm(args):
             arg3 = ""
         if arg2 == "’":
             arg2 = "'"
+        if arg2 == arg3:
+            stem += arg2
+            arg2 = ""
+            arg3 = ""
+        elif ((arg3 == "" and arg2 in ("p", "k", "t")
+               and stem.endswith(arg2)) or
+              (arg2 == "" and arg3 in ("p", "k", "t") and
+               stem.endswith(arg3)) or
+              (arg2 == "t" and arg3 in ("n", "r", "l") and
+               stem.endswith(arg3)) or
+              (arg2 == "p" and arg3 == "m" and stem.endswith(arg3)) or
+              (arg3 == "t" and arg2 in ("n", "r", "l") and
+               stem.endswith(arg2)) or
+              (arg3 == "p" and arg2 == "m" and stem.endswith(arg2))):
+            arg2 = stem[-1] + arg2
+            arg3 = stem[-1] + arg3
+            stem = stem[:-1]
+
         # while (arg2 and arg3 and arg2[0] == arg3[0] and
         #        arg2[0] not in "kpt"):
         #     stem += arg2[0]
@@ -125,6 +162,10 @@ def encode_paradigm(args):
         parts.append("P" + par_sg_a)
 
     paradigm = "".join(parts)
+
+    # These are identical
+    if paradigm == "NoviGs-d":
+        paradigm = "Nkäsi"
 
     return stem, paradigm
 
@@ -339,3 +380,18 @@ def paradigm_nargs(stem, paradigm):
         return 0
 
     return decl.get("nargs", 0)
+
+
+def get_blocked_paradigms(paradigm):
+    """Some paradigms make other paradigms impossible when guessing
+    paradigms.  This returns which paradigms the presence of one paradigm
+    makes impossible (e.g., if kk-k alternation is possible, then it won't
+    be coded as k-)."""
+    blocked = []
+    for lst in blocked_map:
+        old = lst[0]
+        if not paradigm.endswith(old):
+            continue
+        for new in lst[1:]:
+            blocked.append(paradigm[:-len(old)] + new)
+    return blocked

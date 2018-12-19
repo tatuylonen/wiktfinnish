@@ -905,6 +905,7 @@ noun_decls = {
     },
     "fi-decl-rosé": {
     	"nargs": 2,
+	"internal": True,  # This could be used for lemma guessing
 	"min-stem-len": 2,
         "": "1",
         "gen-sg": "1n",
@@ -951,6 +952,7 @@ noun_decls = {
     "fi-decl-parfait": {
     	"nargs": 2,
 	"min-stem-len": 3,
+	"internal": True,  # This could be used for lemma guessing
         "": "1",
         "-clitic": "1'",
         "-poss": "1'",
@@ -998,6 +1000,7 @@ noun_decls = {
     "fi-decl-tiili": {
     	"nargs": 2,
 	"min-stem-len": 3,
+	"internal": True,
         "": "1i",
         "-poss": "1e",
         "gen-sg": "1en",
@@ -1181,6 +1184,7 @@ noun_decls = {
     },
     "fi-decl-käsi": {
     	"nargs": 2,
+	"internal": True,
 	"min-stem-len": 2,
         "": "1si",
         "-poss": "1te",
@@ -1274,6 +1278,7 @@ noun_decls = {
     "fi-decl-lapsi": {
     	"nargs": 2,
 	"min-stem-len": 2,
+	"internal": True,
         "": "1si",
         "-poss": "1se",
         "gen-sg": "1sen",
@@ -1320,6 +1325,7 @@ noun_decls = {
     "fi-decl-veitsi": {
     	"nargs": 2,
 	"min-stem-len": 3,
+	"internal": True,
         "": "1tsi",
         "-poss": "1tse",
         "gen-sg": "1tsen",
@@ -1960,6 +1966,7 @@ noun_decls = {
     "fi-decl-kevät": {
     	"nargs": 2,
 	"min-stem-len": 3,
+	"internal": True,
         "": "1t",
         "-poss": "12",
         "gen-sg": "12n",

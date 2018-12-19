@@ -3,7 +3,7 @@
 # Copyright (c) 2018 Tatu Ylonen.  See LICENSE and https://ylonen.org
 
 import unittest
-import wiktfinnish
+from wiktfinnish import inflect
 
 testcases = [
     ["fi-decl-valo", {"1": "val", "2": "", "3": "", "4": "o", "5": "a"},
@@ -550,7 +550,7 @@ class InflectTests(unittest.TestCase):
             for form, result in lst[2:]:
                 if isinstance(form, str):
                     form = ("", "", form, "", "")
-                ret = wiktfinnish.inflect(args, form)
+                ret = inflect(args, form)
                 if result not in ret:
                     print(name, args, form)
                     print(form, result, "GOT UNEXPECTED RESULT:", ret)
