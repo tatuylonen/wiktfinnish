@@ -1,4 +1,4 @@
-# Wiktfinnish
+# Wiktfinnish - Inflecting Finnish words
 
 This is a Python module for inflecting Finnish words (verb inflection,
 comparatives, cases, possessive suffixes, clitics) using
