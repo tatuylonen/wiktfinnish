@@ -346,7 +346,7 @@ patches or suggestions.
 
 ## License
 
-Copyright (c) 2018 [Tatu Ylonen](https://ylonen.org).  This package is
+Copyright (c) 2018-2019 [Tatu Ylonen](https://ylonen.org).  This package is
 free for both commercial and non-commercial use.  It is licensed under
 the MIT license.  See the file
 [LICENSE](https://github.com/tatuylonen/wiktfinnish/blob/master/LICENSE)
